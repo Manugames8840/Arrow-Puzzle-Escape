@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 5ff55944303caa842b78375d569363c0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Scripts/Feature Announcement/FeatureAnnouncementPopupData.cs
+  uploadId: 819880

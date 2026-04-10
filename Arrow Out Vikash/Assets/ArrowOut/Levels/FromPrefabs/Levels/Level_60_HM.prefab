@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1317396117854029
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4001840315808421}
+  - component: {fileID: 114815944522102160}
+  m_Layer: 0
+  m_Name: Level_60_HM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4001840315808421
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317396117854029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114815944522102160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317396117854029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":14,"YSize":19,"Arrows":[{"Dx":0,"Dy":1,"X":9,"Y":5,"Indices":[79,65,66,52,51,37,38,24,23,9,10],"color":"00000000"},{"Dx":0,"Dy":1,"X":12,"Y":5,"Indices":[82,68,67,53,54,40,39,25,26,12,11],"color":"00000000"},{"Dx":0,"Dy":-1,"X":8,"Y":1,"Indices":[22,36,50,64,78,92,106,107,108,109,110,111,97,83,69,55,41,27,13],"color":"00000000"},{"Dx":-1,"Dy":0,"X":9,"Y":6,"Indices":[93,94,80],"color":"00000000"},{"Dx":1,"Dy":0,"X":12,"Y":6,"Indices":[96,95,81],"color":"00000000"},{"Dx":0,"Dy":1,"X":0,"Y":3,"Indices":[42,28,14,0,1,2,3,17,31,45,59,73,87,88,74,75,61,47,33,19,5,6,7,8],"color":"00000000"},{"Dx":0,"Dy":1,"X":4,"Y":4,"Indices":[60,46,32,18,4],"color":"00000000"},{"Dx":1,"Dy":0,"X":8,"Y":8,"Indices":[120,119,133,132,118,117,131,130,116,115,129,128,114,113,127,126],"color":"00000000"},{"Dx":-1,"Dy":0,"X":3,"Y":7,"Indices":[101,102,103,89,90,104,105,91,77,76,62,63,49,48],"color":"00000000"},{"Dx":1,"Dy":0,"X":7,"Y":2,"Indices":[35,34,20,21],"color":"00000000"},{"Dx":-1,"Dy":0,"X":0,"Y":6,"Indices":[84,85,71,57,58,44,43,29,30,16,15],"color":"00000000"},{"Dx":-1,"Dy":0,"X":3,"Y":13,"Indices":[185,186,200,201,187,188,202,203,189,190,176,162,148,134,135,121],"color":"00000000"},{"Dx":0,"Dy":1,"X":9,"Y":17,"Indices":[247,233,234,235,221,207,208,194,195,181,167,153,139,125],"color":"00000000"},{"Dx":0,"Dy":1,"X":10,"Y":14,"Indices":[206,192,178,179,193],"color":"00000000"},{"Dx":0,"Dy":1,"X":12,"Y":12,"Indices":[180,166,165,164,163,177,191,205,219,220],"color":"00000000"},{"Dx":1,"Dy":0,"X":12,"Y":8,"Indices":[124,123,122,136,150,149],"color":"00000000"},{"Dx":-1,"Dy":0,"X":11,"Y":10,"Indices":[151,152,138,137],"color":"00000000"},{"Dx":0,"Dy":1,"X":7,"Y":12,"Indices":[175,161,147,146,145,159,160,174],"color":"00000000"},{"Dx":0,"Dy":1,"X":4,"Y":17,"Indices":[242,228,214,213,199,198,184,170,171,172,173],"color":"00000000"},{"Dx":0,"Dy":1,"X":0,"Y":5,"Indices":[70,56],"color":"00000000"},{"Dx":1,"Dy":0,"X":11,"Y":17,"Indices":[249,248,262,261,260,246,245,259,258,244,243,257,256,255,241],"color":"00000000"},{"Dx":0,"Dy":1,"X":0,"Y":18,"Indices":[252,238,224,225,211,210,196,197,183,169,155,141,142,143,144,158],"color":"00000000"},{"Dx":-1,"Dy":0,"X":2,"Y":11,"Indices":[156,157],"color":"00000000"},{"Dx":1,"Dy":0,"X":3,"Y":16,"Indices":[227,226,240,254,253,239],"color":"00000000"},{"Dx":1,"Dy":0,"X":8,"Y":15,"Indices":[218,217,216,215,229,230,231,232],"color":"00000000"},{"Dx":0,"Dy":1,"X":0,"Y":13,"Indices":[182,168,154,140],"color":"00000000"},{"Dx":0,"Dy":1,"X":12,"Y":18,"Indices":[264,250,236,222,223,209],"color":"00000000"},{"Dx":0,"Dy":1,"X":13,"Y":18,"Indices":[265,251,237],"color":"00000000"},{"Dx":0,"Dy":-1,"X":2,"Y":5,"Indices":[72,86,100],"color":"00000000"},{"Dx":0,"Dy":1,"X":0,"Y":8,"Indices":[112,98,99],"color":"00000000"}]}'

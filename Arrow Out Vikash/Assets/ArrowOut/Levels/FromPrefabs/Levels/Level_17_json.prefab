@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1734240175405013
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4996589222334912}
+  - component: {fileID: 114548882986542928}
+  m_Layer: 0
+  m_Name: Level_17_json
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4996589222334912
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734240175405013}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114548882986542928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734240175405013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":10,"YSize":13,"Arrows":[{"Dx":1,"Dy":0,"X":9,"Y":5,"Indices":[59,58,57,56,55,54,53,43,33,34,44,45],"BendCount":0},{"Dx":0,"Dy":1,"X":0,"Y":12,"Indices":[120,110,100,101,111,121],"BendCount":2},{"Dx":1,"Dy":0,"X":8,"Y":4,"Indices":[48,47,46,36,37,38,39,29,28],"BendCount":4},{"Dx":1,"Dy":0,"X":7,"Y":2,"Indices":[27,26,16,17,18,19],"BendCount":2},{"Dx":1,"Dy":0,"X":5,"Y":1,"Indices":[15,14,13,12,11,1,2,3,4,5,6,7,8,9],"BendCount":2},{"Dx":0,"Dy":-1,"X":1,"Y":2,"Indices":[21,31,41,51,61,71,72,62,52,42,32,22],"BendCount":2},{"Dx":0,"Dy":-1,"X":1,"Y":8,"Indices":[81,91,90,80,70,60,50,40,30,20,10,0],"BendCount":2},{"Dx":-1,"Dy":0,"X":3,"Y":2,"Indices":[23,24,25,35],"BendCount":1},{"Dx":0,"Dy":-1,"X":3,"Y":7,"Indices":[73,83,82,92,102,112,122,123,124,125,126,116,115,114,113,103,93,94],"BendCount":7},{"Dx":-1,"Dy":0,"X":7,"Y":12,"Indices":[127,128,129,119,109,99,89,79,69,68,67,66,76,86,96,97,98,108,118,117],"BendCount":6},{"Dx":1,"Dy":0,"X":8,"Y":7,"Indices":[78,77,87,88],"BendCount":2},{"Dx":0,"Dy":1,"X":4,"Y":7,"Indices":[74,64,65,75,85,95,105,106,107],"BendCount":3}]}'

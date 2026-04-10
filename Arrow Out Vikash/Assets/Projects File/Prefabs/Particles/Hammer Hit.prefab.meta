@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3f65e5dab40a7d645bda38bcd6fdd91f
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Prefabs/Particles/Hammer Hit.prefab
+  uploadId: 819880

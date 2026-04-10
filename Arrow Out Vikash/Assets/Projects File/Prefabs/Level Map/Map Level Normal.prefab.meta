@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a545dc05b48f0714cac7c396c21533ff
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Prefabs/Level Map/Map Level Normal.prefab
+  uploadId: 819880

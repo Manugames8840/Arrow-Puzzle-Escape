@@ -1,0 +1,455 @@
+fileFormatVersion: 2
+guid: c3033890507ba894882871c0dcd54c8c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 90610974852147797
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_0'
+  - first:
+      213: -405050557143348609
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_1'
+  - first:
+      213: 1116877281593741876
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_2'
+  - first:
+      213: -2046168622844042879
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_3'
+  - first:
+      213: -3695582726308897839
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_4'
+  - first:
+      213: -269367879802780144
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_5'
+  - first:
+      213: 9085624257231669935
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_6'
+  - first:
+      213: -8097580978868362979
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_7'
+  - first:
+      213: -161687088714196589
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_8'
+  - first:
+      213: 7599707308193731394
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_9'
+  - first:
+      213: -5960602121059581034
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_10'
+  - first:
+      213: 2033165433082298980
+    second: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_11'
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_0'
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 586
+        width: 194
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55a60d8933ae14100800000000000000
+      internalID: 90610974852147797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_1'
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 675
+        width: 137
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7a85611aa8f06af0800000000000000
+      internalID: -405050557143348609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_2'
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 706
+        width: 65
+        height: 212
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 432591b58f1ff7f00800000000000000
+      internalID: 1116877281593741876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_3'
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 673
+        width: 142
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 181a4d48a7c8a93e0800000000000000
+      internalID: -2046168622844042879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_4'
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 591
+        width: 191
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dbd9482717a6bcc0800000000000000
+      internalID: -3695582726308897839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_5'
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 467
+        width: 212
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016847a2753034cf0800000000000000
+      internalID: -269367879802780144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_6'
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 467
+        width: 213
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: faa47fecf1f961e70800000000000000
+      internalID: 9085624257231669935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_7'
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 269
+        width: 191
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d116796a00d9f9f80800000000000000
+      internalID: -8097580978868362979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_8'
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 135
+        width: 142
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3995c60137291cdf0800000000000000
+      internalID: -161687088714196589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_9'
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 82
+        width: 65
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 243d3d52885977960800000000000000
+      internalID: 7599707308193731394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_10'
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 134
+        width: 140
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 693cdc693ffa74da0800000000000000
+      internalID: -5960602121059581034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_11'
+      rect:
+        serializedVersion: 2
+        x: 673
+        y: 275
+        width: 195
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46249707031473c10800000000000000
+      internalID: 2033165433082298980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_0': 90610974852147797
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_1': -405050557143348609
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_10': -5960602121059581034
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_11': 2033165433082298980
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_2': 1116877281593741876
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_3': -2046168622844042879
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_4': -3695582726308897839
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_5': -269367879802780144
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_6': 9085624257231669935
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_7': -8097580978868362979
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_8': -161687088714196589
+      '[CITYPNG.COM]Loading Load Icon Transparent PNG - 1000x1000_9': 7599707308193731394
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

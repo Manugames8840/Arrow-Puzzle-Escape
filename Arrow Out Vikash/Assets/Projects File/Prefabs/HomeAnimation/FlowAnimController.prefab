@@ -1,0 +1,564 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8334455007185138279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6019117356668713250}
+  - component: {fileID: 6719404778176770830}
+  m_Layer: 0
+  m_Name: FlowAnimController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6019117356668713250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334455007185138279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.49639, y: 15.77781, z: 0.12961}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6719404778176770830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334455007185138279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7223c5ba145d3a4da7f6a91727751c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Frameork.RewardFlowController
+  MenuCanvas: {fileID: 0}
+  StartingPoint: {fileID: 0}
+  EndPoint: {fileID: 0}
+  RwPrefab: {fileID: 0}
+  RewardTransforms:
+  - Type: 0
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: 912ef50b8d9ffaf499bb691e2a5c2100,
+      type: 3}
+    RewardSprite: {fileID: 0}
+    InstantiateAmount: 5
+    AmountAdded: 30
+    spawnDelay: 0.1
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 1.5, y: 1.5, z: 1.5}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 0.2
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 0
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60
+  - Type: 1
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: 1675845fc012f3d42a5cdb737a210a0e,
+      type: 3}
+    RewardSprite: {fileID: 21300000, guid: 0dbf82aa62393524fb507d4eb1b231cb, type: 3}
+    InstantiateAmount: 1
+    AmountAdded: 1
+    spawnDelay: 0.1
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 5, y: 5, z: 5}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 1
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 0
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60
+  - Type: 2
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: 1675845fc012f3d42a5cdb737a210a0e,
+      type: 3}
+    RewardSprite: {fileID: 21300000, guid: f4b1f60ba8a0e2c4380eb2c71093f57f, type: 3}
+    InstantiateAmount: 1
+    AmountAdded: 1
+    spawnDelay: 0.1
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 5, y: 5, z: 5}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 1
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 0
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60
+  - Type: 3
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: 1675845fc012f3d42a5cdb737a210a0e,
+      type: 3}
+    RewardSprite: {fileID: 21300000, guid: f4c640a57d4733042a576305c8e9d32f, type: 3}
+    InstantiateAmount: 1
+    AmountAdded: 1
+    spawnDelay: 0.1
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 5, y: 5, z: 5}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 1
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 0
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60
+  - Type: 4
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: 1675845fc012f3d42a5cdb737a210a0e,
+      type: 3}
+    RewardSprite: {fileID: 21300000, guid: c10ae59b8907f3f499809c939c93c94e, type: 3}
+    InstantiateAmount: 1
+    AmountAdded: 1
+    spawnDelay: 0.1
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 5, y: 5, z: 5}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 1
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 0
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60
+  - Type: 5
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: 1675845fc012f3d42a5cdb737a210a0e,
+      type: 3}
+    RewardSprite: {fileID: 21300000, guid: c30e696c126969e4a9d020b50ee8fc24, type: 3}
+    InstantiateAmount: 1
+    AmountAdded: 1
+    spawnDelay: 0.1
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 5, y: 5, z: 5}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 1
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 0
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60
+  - Type: 6
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: 0edea6bf083e67c41b5b91e61b1bb56c,
+      type: 3}
+    RewardSprite: {fileID: 0}
+    InstantiateAmount: 1
+    AmountAdded: 1
+    spawnDelay: 0.3
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 3, y: 3, z: 3}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 0.5
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 0
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60
+  - Type: 10
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: c3aff55310880a94384ce6c07ad8d3bd,
+      type: 3}
+    RewardSprite: {fileID: 21300000, guid: fa9a1d240cc2727429f75f0a72a6d3c1, type: 3}
+    InstantiateAmount: 1
+    AmountAdded: 100
+    spawnDelay: 0.1
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 1.5, y: 1.5, z: 1.5}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 0.2
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 0
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60
+  - Type: 9
+    StartingPoint: {fileID: 0}
+    EndPoint: {fileID: 0}
+    Prefab: {fileID: 4490766472396041823, guid: 912ef50b8d9ffaf499bb691e2a5c2100,
+      type: 3}
+    RewardSprite: {fileID: 0}
+    InstantiateAmount: 5
+    AmountAdded: 35
+    spawnDelay: 0.1
+    finalScale: 0.3
+    StartScale: {x: 0, y: 0, z: 0}
+    EndScale: {x: 1.5, y: 1.5, z: 1.5}
+    ScaleDuration: 0.15
+    EnableRotation: 0
+    RotationLoops: 3
+    RotationDuration: 0.4
+    EnableScatter: 0
+    ScatterRadius: 40
+    ScatterDuration: 0.4
+    MoveType: 0
+    MoveDuration: 0.2
+    MoveCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    PunchTarget: 1
+    PunchScale: 1.2
+    AppearAudioClip: {fileID: 0}
+    CollectAudioClip: {fileID: 0}
+    IsTextPopup: 1
+    PopupSettings:
+      TextPrefab: {fileID: 0}
+      Parent: {fileID: 0}
+      WorldPosition: {x: 0, y: 0, z: 0}
+      StartScale: {x: 0, y: 0, z: 0}
+      EndScale: {x: 1, y: 1, z: 1}
+      ScaleInDuration: 0.2
+      MoveUpDistance: 100
+      JumpPower: 120
+      JumpCount: 1
+      MoveDuration: 0.6
+      EnableOutline: 1
+      OutlineColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      OutlineWidth: 0.3
+      FadeIn: 0
+      FadeInDuration: 0.1
+      FadeOut: 1
+      FadeOutDelay: 0.1
+      FadeOutDuration: 0.3
+      ScaleToZeroAtEnd: 1
+      EndScaleDuration: 0.15
+      TextColor: {r: 1, g: 1, b: 1, a: 1}
+      FontSize: 60

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b369ade7de73a8e419c27cdcc36f54b6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 249305
+  packageName: Puzzle Game Effect Collection - URP
+  packageVersion: 1.0
+  assetPath: Assets/CartoonVFX9X/PuzzleGameEffect/URP/UniversalRenderPipelineAsset.asset
+  uploadId: 569862

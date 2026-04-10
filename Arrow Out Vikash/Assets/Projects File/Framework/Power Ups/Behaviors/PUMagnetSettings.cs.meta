@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f1673e4678e9c8d4f86345cc04262de1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Scripts/Power Ups/Behaviors/PUMagnetSettings.cs
+  uploadId: 819880

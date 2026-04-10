@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1703893702365835
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4453846436559824}
+  - component: {fileID: 114606098021944423}
+  m_Layer: 0
+  m_Name: Level_593_HM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4453846436559824
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703893702365835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114606098021944423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703893702365835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":11,"YSize":12,"Arrows":[{"Indices":[115,104,93,82,71,60,49,38,27,16,5,4,3,2,1,0,11,22,33,44,55,66,77,88,99,110,111,112,113,114],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[130,129,128,127,126,125,124,123,122,121],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[98,109,120,131],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[52,63,64,65,76,87],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[19,30,41,42,53,54,43,32,21,10,9,20,31],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[6,17,18,7,8],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[75,74,73,62,51,40,29,28],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[119,108,97,86,85,84,83,72,61,50,39],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[94,95,96,107,118,117,116],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[106,105],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[103,92,81,70],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[80,79,68,57,58,69],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[59,48,47,46,35,24],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[36,37,26,15,14,25],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[13,12,23],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[67,56,45,34],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[100,101,102,91,90,89,78],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false}],"ArrowPartData":[]}'

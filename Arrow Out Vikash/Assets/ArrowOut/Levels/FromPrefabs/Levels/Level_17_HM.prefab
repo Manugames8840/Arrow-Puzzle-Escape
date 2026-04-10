@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1161455784980874
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4395106669184486}
+  - component: {fileID: 114788781236341838}
+  m_Layer: 0
+  m_Name: Level_17_HM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4395106669184486
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161455784980874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114788781236341838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161455784980874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":12,"YSize":12,"Arrows":[{"Dx":-1,"Dy":0,"X":4,"Y":3,"Indices":[40,41,53,65,66,67,55,43,44,45,57,69],"color":"00FFE0FF"},{"Dx":0,"Dy":1,"X":6,"Y":4,"Indices":[54,42,30,31,32,33,34,46,58],"color":"A825FEFF"},{"Dx":0,"Dy":-1,"X":8,"Y":4,"Indices":[56,68,80,79,91,103,115,116,117,118,119,107],"color":"2928FEFF"},{"Dx":0,"Dy":-1,"X":9,"Y":6,"Indices":[81,93,92,104,105,106,94,82],"color":"2927FFFF"},{"Dx":-1,"Dy":0,"X":10,"Y":5,"Indices":[70,71,83,95],"color":"00FEE0FF"},{"Dx":0,"Dy":1,"X":3,"Y":4,"Indices":[51,39,27,28,29,17,18,19,20,21,22,23,35,47,59],"color":"A825FFFF"},{"Dx":1,"Dy":0,"X":11,"Y":0,"Indices":[11,10,9,8,7,6,5,4,16,15,14,26,38,50,62,63,64,52],"color":"FE37BDFF"},{"Dx":-1,"Dy":0,"X":0,"Y":0,"Indices":[0,1,2,3],"color":"00FEE0FF"},{"Dx":0,"Dy":-1,"X":1,"Y":5,"Indices":[61,73,74,75,76,77,78,90,102,114,126,127,128,129,130,131],"color":"2928FEFF"},{"Dx":0,"Dy":1,"X":0,"Y":5,"Indices":[60,48,49,37,36,24,25,13,12],"color":"A825FEFF"},{"Dx":1,"Dy":0,"X":11,"Y":11,"Indices":[143,142,141,140,139,138,137,125,113,101,89,88,87,86,85,84,72],"color":"FF38BBFF"},{"Dx":-1,"Dy":0,"X":0,"Y":9,"Indices":[108,109,110,111,112,100,99,98,97,96],"color":"00FEE0FF"},{"Dx":1,"Dy":0,"X":4,"Y":11,"Indices":[136,135,134,133,132,120,121,122,123,124],"color":"FE37BDFF"}]}'

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cfd61a96c34a4164a966097c9cb8bd1b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Animations/Pointer/PointerHolder.controller
+  uploadId: 819880

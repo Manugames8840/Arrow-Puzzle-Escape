@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1963231822471943
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4844753358759886}
+  - component: {fileID: 114722827456437038}
+  m_Layer: 0
+  m_Name: Level_80_HM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4844753358759886
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963231822471943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114722827456437038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963231822471943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":20,"YSize":26,"Arrows":[{"Dx":1,"Dy":0,"X":13,"Y":12,"Indices":[253,252,232,212,192,172,152,132,112,111,110,109,108,107,106,126,146,166,165,164,163,162,161,160,180,200,220,240,260,280,300,320,321,322,323,324,325,326,327,328,329,330,331,332,333,334,335,336,337,338,339,359,379,399,419,439,459,479,499,519,518,517,516,515,514,513,512,511,510,490,470,450,430,410,390,370,350],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":19,"Y":11,"Indices":[239,259,279,299,319,318,317,316,315],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":0,"Y":25,"Indices":[500,501,502,503,504,505,506,507,508,509,489,469,449,429,409,389,369,349,348,347,346,345,344,343,342,341,340,360,380,400,420,440,460,480],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":1,"Y":9,"Indices":[181,201,221,241,261,281,282,283,284,285,286,266,246,226,206,186],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":5,"Y":21,"Indices":[425,426,427,428,408,388,368],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":18,"Y":1,"Indices":[38,37,36,56],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":16,"Y":0,"Indices":[16,17,18,19,39,59,79,99,98,97,96,95,115,135,155,154,153],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":0,"Y":6,"Indices":[120,140,141,142,143,144,145,125,105,85,65,66,67,68,88],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":13,"Y":13,"Indices":[273,272,271,270,269,268,267],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":1,"Y":15,"Indices":[301,302,303,304,305],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":9,"Y":15,"Indices":[309,308,288,287,307,306],"color":"00000000","isCollected":false},{"Dx":0,"Dy":1,"X":2,"Y":13,"Indices":[262,242,222,223,224,225],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":3,"Y":6,"Indices":[123,124,104,84,64,44,24,4,5,6,7,8,28,48],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":7,"Y":2,"Indices":[47,46,45,25,26,27],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":11,"Y":6,"Indices":[131,151,171,191,211,210,190,189,209,208,188,187,207],"color":"00000000","isCollected":false},{"Dx":0,"Dy":1,"X":11,"Y":20,"Indices":[411,391,371,351],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":8,"Y":23,"Indices":[468,467,487,488],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":14,"Y":14,"Indices":[294,314,313,312,311,310,290,289],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":11,"Y":14,"Indices":[291,292,293],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":1,"Y":18,"Indices":[361,362,382,402,422,421],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":1,"Y":19,"Indices":[381,401],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":5,"Y":19,"Indices":[385,386],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":7,"Y":20,"Indices":[407,406,405],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":5,"Y":22,"Indices":[445,465,485,486,466,446,447,448],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":11,"Y":21,"Indices":[431,432,433,453,473,493,494,495,496,476,456,436,437,438],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":18,"Y":22,"Indices":[458,457,477,497,498,478],"color":"00000000","isCollected":false},{"Dx":0,"Dy":1,"X":12,"Y":24,"Indices":[492,472,452,451,471,491],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":15,"Y":17,"Indices":[355,354,353,373,393,394,395,375,374],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":17,"Y":18,"Indices":[377,397,417],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":12,"Y":17,"Indices":[352,372,392,412,413,414,415,416],"color":"00000000","isCollected":false},{"Dx":0,"Dy":1,"X":15,"Y":23,"Indices":[475,455,435,434,454,474],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":2,"Y":10,"Indices":[202,203,183,182],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":5,"Y":12,"Indices":[245,244,243,263,264,265],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":7,"Y":6,"Indices":[127,147,167,168,169,170,150,130,129,128,148,149],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":7,"Y":11,"Indices":[227,228,229,230,231,251],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":10,"Y":12,"Indices":[250,249,248,247],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":5,"Y":10,"Indices":[205,204,184,185],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":15,"Y":0,"Indices":[15,35,55,75,74,73,72,52,32,12,11,10,9],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":7,"Y":4,"Indices":[87,86],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":14,"Y":6,"Indices":[134,133,113,93,94,114],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":12,"Y":4,"Indices":[92,91,71,51,31],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":10,"Y":1,"Indices":[30,50,70,90,89,69,49,29],"color":"00000000","isCollected":false},{"Dx":0,"Dy":1,"X":13,"Y":11,"Indices":[233,213,193,173],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":13,"Y":0,"Indices":[13,33,53,54,34,14],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":16,"Y":3,"Indices":[76,77,78,58,57],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":18,"Y":14,"Indices":[298,297,296,295,275,255,256,257,258,278,277,276],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":19,"Y":7,"Indices":[159,158,157,177,197,196,195],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":18,"Y":11,"Indices":[238,237,217,216,215,235,236],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":19,"Y":10,"Indices":[219,218,198,178,179,199],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":16,"Y":5,"Indices":[116,117,118],"color":"00000000","isCollected":false},{"Dx":1,"Dy":0,"X":19,"Y":6,"Indices":[139,138,137,136,156,176,175,174,194,214,234,254,274],"color":"00000000","isCollected":false},{"Dx":0,"Dy":1,"X":2,"Y":24,"Indices":[482,462,442,441,461,481],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":3,"Y":18,"Indices":[363,383,403,423,443,463,483,484,464,444,424,404,384,364,365],"color":"00000000","isCollected":false},{"Dx":0,"Dy":1,"X":16,"Y":19,"Indices":[396,376,356,357,358,378,398,418],"color":"00000000","isCollected":false},{"Dx":0,"Dy":1,"X":7,"Y":19,"Indices":[387,367,366],"color":"00000000","isCollected":false},{"Dx":0,"Dy":-1,"X":0,"Y":1,"Indices":[20,40,60,80,100,101,81,61,41],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":1,"Y":1,"Indices":[21,22,42,62,82,102,122,121],"color":"00000000","isCollected":false},{"Dx":-1,"Dy":0,"X":0,"Y":0,"Indices":[0,1,2,3,23,43,63,83,103],"color":"00000000","isCollected":false}]}'

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d62df0aa2ba7cba47892dc570f493f6d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Animations/Magnet/Idle.anim
+  uploadId: 819880

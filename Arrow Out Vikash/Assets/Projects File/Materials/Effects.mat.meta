@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ebe96842c86f43c48b0e93940803bd96
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Materials/Effects.mat
+  uploadId: 819880

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c8e681c6fc70e9d45a33040ece1af397
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Scripts/UI/Components/TimerVisualiser.cs
+  uploadId: 819880

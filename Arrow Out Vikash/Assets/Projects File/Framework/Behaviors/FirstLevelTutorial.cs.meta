@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 212622a2ffc25d7488695b52893ebca5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Scripts/Tutorial/Behaviors/FirstLevelTutorial.cs
+  uploadId: 819880

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c7c160d8b42a3b0488579eea15bae028
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Animations/Magnet/Disappear.anim
+  uploadId: 819880

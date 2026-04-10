@@ -1,0 +1,207 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4336330902574994439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4354627591086500312}
+  - component: {fileID: 7997906336029767267}
+  - component: {fileID: 1972083885520914626}
+  - component: {fileID: 6330622620188331815}
+  - component: {fileID: 660512283407707283}
+  - component: {fileID: 7880826410840582660}
+  - component: {fileID: 2152185092197164831}
+  - component: {fileID: 6377878355930283212}
+  - component: {fileID: 425456324255771164}
+  - component: {fileID: 2630921520566155536}
+  - component: {fileID: 4716744294584706200}
+  m_Layer: 0
+  m_Name: Scripts Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4354627591086500312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7997906336029767267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093609155605e9242a09f1d9718c610e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Framework.GameController
+  uiController: {fileID: 0}
+  LoadingScreenUI: {fileID: 0}
+  GameConstrain: 2
+  CameraCtrl: {fileID: 0}
+  levelPanel: {fileID: 0}
+--- !u!114 &1972083885520914626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7784f842d531504cabbe43d83ea9324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles:
+  - particleName: Block Destruction
+    particlePrefab: {fileID: 4637739166629817039, guid: 6d4e7ed2c1b55db499bc025e0afa0212, type: 3}
+--- !u!114 &6330622620188331815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5503a3fb9b1a14cb68edec0d987595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingTextCases: []
+--- !u!114 &660512283407707283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eecf5850500c7941b09c43f62ff584b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: d619bd23d9a14ea499e7df8deea459b4, type: 3}
+--- !u!114 &7880826410840582660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f9b48f85c3e76429adb9f6ce712669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  database: {fileID: 11400000, guid: 40dbc9b6be39f4a49b2656ae42a36d2c, type: 2}
+  activateSound: {fileID: 8300000, guid: e9d1a66e148c5fd41ba529cc195ea4d9, type: 3}
+--- !u!114 &2152185092197164831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54642735827e18d4e8de74868550dcf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlayImage: {fileID: 0}
+  fadeInDuration: 0.3
+  fadeInEasingType: 0
+  fadeOutDuration: 0.4
+  fadeOutEasingType: 0
+  freezeSound: {fileID: 8300000, guid: 1418ac60acc335d459216b7607475cad, type: 3}
+--- !u!114 &6377878355930283212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1442cef9c6030b94bb5d173d1c533f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialCanvasController: {fileID: 0}
+--- !u!114 &425456324255771164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3e13fbfc5933d42b05acb55345ae0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Watermelon.RaycastController
+--- !u!114 &2630921520566155536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d64626221e46fc741acc2bfb267fde39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Framework.LevelController
+  gridManager: {fileID: 4716744294584706200}
+--- !u!114 &4716744294584706200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336330902574994439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a9f8718045f28d4d9448a765a97ca5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GridManager
+  renderMode: 0
+  cameraMode: 0
+  arrowHeadSprite: {fileID: 1092879296640002989, guid: eccefb43a0fa8e5438c03433cb7f19f5, type: 3}
+  arrowBodySprite: {fileID: 21300000, guid: fb204be107d11824c975ecadb06561fa, type: 3}
+  arrowBodySpriteAlt: {fileID: 0}
+  arrowCornerSprite: {fileID: 0}
+  connectorSprite: {fileID: -2876304714433182024, guid: 70460a639d651c7449acc8d3f5fa8206, type: 3}
+  arrow3DMaterial: {fileID: 2100000, guid: 3f348ad97f71cfc47a17c3c15360ac3f, type: 2}
+  blocker3D: {fileID: 1334823143920082175, guid: 27db4a177be47224a9d4846c83237a8e, type: 3}
+  hole3D: {fileID: 4138021681211411532, guid: e51f3dc0e673b7940b2c82b0dda375a9, type: 3}
+  portal3D: {fileID: 5088660016285667620, guid: 8909b87f30aa6e244afd1157e09356a4, type: 3}
+  enableSnakeHeadTail: 0
+  snakeHeadPrefab: {fileID: 0}
+  snakeTailPrefab: {fileID: 0}
+  blocker2D: {fileID: 0}
+  hole2D: {fileID: 0}
+  portal2D: {fileID: 0}
+  gridDotPrefab: {fileID: 5598110209825082951, guid: 80a8a4982adf93b4d84ed8cdc0ac473b, type: 3}
+  gridDotColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  mainCamera: {fileID: 0}
+  cameraPadding: 7
+  gridRoot: {fileID: 0}
+  _moveSystem: {fileID: 0}
+  previewLinesEnabled: 0

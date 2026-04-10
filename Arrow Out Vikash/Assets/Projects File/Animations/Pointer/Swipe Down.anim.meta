@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a835e9527fa3ad14d868708e849a29de
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Animations/Pointer/Swipe Down.anim
+  uploadId: 819880

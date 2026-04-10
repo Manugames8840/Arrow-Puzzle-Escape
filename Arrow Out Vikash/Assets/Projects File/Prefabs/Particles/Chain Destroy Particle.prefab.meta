@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 665f14c2cfcd53b4f96ea7f44c6d6507
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Prefabs/Particles/Chain Destroy Particle.prefab
+  uploadId: 819880

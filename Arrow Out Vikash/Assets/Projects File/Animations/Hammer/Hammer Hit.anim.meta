@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 80060012c875cb04080694736b8541f3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Animations/Hammer/Hammer Hit.anim
+  uploadId: 819880

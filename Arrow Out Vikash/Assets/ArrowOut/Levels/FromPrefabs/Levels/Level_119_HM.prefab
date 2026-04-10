@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1494142487612693
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4905834988644927}
+  - component: {fileID: 114047704829438438}
+  m_Layer: 0
+  m_Name: Level_119_HM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4905834988644927
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494142487612693}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114047704829438438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494142487612693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":26,"YSize":47,"Arrows":[{"Indices":[1056,1030,1004,978,952,926,900,874,848,822,796,770,744,718,692,666,640,614,588,562,536],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1049,1023,997,971,945,919,893,867,841,815,789,763,737,711,685,659,633,607,581,555,529],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[519,518,517,491,490,489],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[494,495,496,470,471,472],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[416,417,418,444,445,446],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[441,440,439,465,464,463],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[419,420,394,395,396],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[438,437,411,410,409],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[383,382,381,380,379,378,377,376,375,374,373,372,371,370],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1127,1101],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1154,1128],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1181,1155],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1075,1076,1102,1103,1129,1130],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1184,1158],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1159,1133],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1134,1108],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[349,323,297,271,245,219,193,167,141],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[352,326,300,274,248,222,196,170,144],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[112,113,114,115,116,117,118,119,120,121],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[86,87,61,62],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[95,94,68,67],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[63,37,11],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[66,40,14],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[12,13],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[64,65],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[39,38],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[93,92,91,90,89,88],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1208,1182,1156],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1209,1183,1157],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[350,324,298,299,273,247,221,195,194,168,142],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[169,143],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[272,246,220],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[351,325],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[477,476,475,474,448,422,421],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[473,447],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[402,401,427,453,479,478],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[481,455,429,403],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[400,399,398,424,450],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[397,423,449],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[451,452,426,425],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[488,462,436],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[435,434,433,459,485,484,483],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[487,486,460,461],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[482,456,430,404,405],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[431,457,458,432],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[408,407,406],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[480,454,428],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[561,560,559,533,532,531],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[898,872,846,820,794,768,742,716,690,664,663,662,661,660,634,608,582,556,530],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[817,791,792,766,740,714,688],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[844,818,819,793,767,741,715,689],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[635,609,583,557],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[637,611,585,584,558],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[636,610],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[639,638,612,586],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[613,587],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[691,665],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[743,717],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[795,769],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[847,821],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[899,873],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[925,924,923,897,871,845],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[738,739,713,687],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[712,686],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[870,869,843,842,816,790,764,765],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[977,976,975,949,948,922,896],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[950,951],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[946,947,921,895],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[920,894,868],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1053,1052,1026,1000,999],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1105,1079,1080,1054,1028,1027,1001,1002],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1055,1029,1003],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1077,1078,1104],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1050,1051,1025,1024],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[998,972,973,974],"color":"00000000","isCollected":false,"isClicked":false},{"Indices":[1082,1081,1107,1106,1132,1131],"color":"00000000","isCollected":false,"isClicked":false}]}'

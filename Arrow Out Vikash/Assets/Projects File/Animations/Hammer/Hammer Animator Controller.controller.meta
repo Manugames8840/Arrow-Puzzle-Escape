@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ade8f76b4a0473842964ca7ead5d2c94
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Animations/Hammer/Hammer Animator Controller.controller
+  uploadId: 819880

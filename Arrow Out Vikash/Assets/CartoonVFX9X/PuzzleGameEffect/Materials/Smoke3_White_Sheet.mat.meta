@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b0bd1e8fd9b8b7b46881532ececc3708
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 249305
+  packageName: Puzzle Game Effect Collection - URP
+  packageVersion: 1.0
+  assetPath: Assets/CartoonVFX9X/PuzzleGameEffect/Materials/Smoke3_White_Sheet.mat
+  uploadId: 569862

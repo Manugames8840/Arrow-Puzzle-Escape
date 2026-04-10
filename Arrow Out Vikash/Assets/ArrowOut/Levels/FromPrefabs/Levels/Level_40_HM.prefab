@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1240975221889171
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4067436211438886}
+  - component: {fileID: 114148956386289062}
+  m_Layer: 0
+  m_Name: Level_40_HM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4067436211438886
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240975221889171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114148956386289062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240975221889171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":11,"YSize":17,"Arrows":[{"Dx":0,"Dy":1,"X":2,"Y":8,"Indices":[90,79,80,81,82,71,60,61,50,51,52,41,42,43],"color":"00000000"},{"Dx":0,"Dy":1,"X":10,"Y":2,"Indices":[32,21,10,9,8,7,6,17,28,39],"color":"00000000"},{"Dx":0,"Dy":1,"X":7,"Y":3,"Indices":[40,29,30,31],"color":"00000000"},{"Dx":1,"Dy":0,"X":9,"Y":1,"Indices":[20,19,18],"color":"00000000"},{"Dx":0,"Dy":1,"X":1,"Y":8,"Indices":[89,78,77,66,55,44,33,22,11,0,1,2,3,4,5],"color":"00000000"},{"Dx":0,"Dy":-1,"X":1,"Y":1,"Indices":[12,23,34,35,36,37,48,59],"color":"00000000"},{"Dx":0,"Dy":1,"X":5,"Y":4,"Indices":[49,38,27,16],"color":"00000000"},{"Dx":-1,"Dy":0,"X":2,"Y":2,"Indices":[24,25,26],"color":"00000000"},{"Dx":1,"Dy":0,"X":4,"Y":1,"Indices":[15,14,13],"color":"00000000"},{"Dx":1,"Dy":0,"X":7,"Y":13,"Indices":[150,149,160,159,170,169,168,167,166],"color":"00000000"},{"Dx":1,"Dy":0,"X":2,"Y":14,"Indices":[156,155,154,165,176,177,178],"color":"00000000"},{"Dx":0,"Dy":1,"X":7,"Y":16,"Indices":[183,172,171,182,181,180,179],"color":"00000000"},{"Dx":0,"Dy":1,"X":1,"Y":6,"Indices":[67,56,45,46],"color":"00000000"},{"Dx":1,"Dy":0,"X":4,"Y":6,"Indices":[70,69,68],"color":"00000000"},{"Dx":-1,"Dy":0,"X":2,"Y":5,"Indices":[57,58,47],"color":"00000000"},{"Dx":1,"Dy":0,"X":6,"Y":9,"Indices":[105,104,115,114,125,136,137,138,139,140,151,162,161],"color":"00000000"},{"Dx":-1,"Dy":0,"X":0,"Y":13,"Indices":[143,144,145,146,157],"color":"00000000"},{"Dx":1,"Dy":0,"X":5,"Y":13,"Indices":[148,147,158],"color":"00000000"},{"Dx":0,"Dy":1,"X":8,"Y":16,"Indices":[184,173,174,175,186,185],"color":"00000000"},{"Dx":1,"Dy":0,"X":8,"Y":6,"Indices":[74,73,84,95,106,117,116],"color":"00000000"},{"Dx":-1,"Dy":0,"X":5,"Y":11,"Indices":[126,127,128],"color":"00000000"},{"Dx":0,"Dy":1,"X":4,"Y":9,"Indices":[103,92,93,94],"color":"00000000"},{"Dx":0,"Dy":-1,"X":6,"Y":6,"Indices":[72,83],"color":"00000000"},{"Dx":0,"Dy":1,"X":9,"Y":8,"Indices":[97,86,75],"color":"00000000"},{"Dx":1,"Dy":0,"X":10,"Y":13,"Indices":[153,152,163,164],"color":"00000000"},{"Dx":-1,"Dy":0,"X":0,"Y":12,"Indices":[132,133,122,123,112,101,100,99,88],"color":"00000000"},{"Dx":1,"Dy":0,"X":1,"Y":10,"Indices":[111,110,121],"color":"00000000"},{"Dx":-1,"Dy":0,"X":2,"Y":12,"Indices":[134,135,124,113],"color":"00000000"},{"Dx":1,"Dy":0,"X":10,"Y":4,"Indices":[54,53,64,63,62],"color":"00000000"},{"Dx":0,"Dy":1,"X":10,"Y":11,"Indices":[131,120,119,108,107],"color":"00000000"},{"Dx":0,"Dy":1,"X":8,"Y":8,"Indices":[96,85],"color":"00000000"},{"Dx":0,"Dy":1,"X":10,"Y":9,"Indices":[109,98,87,76,65],"color":"00000000"},{"Dx":1,"Dy":0,"X":10,"Y":12,"Indices":[142,141,130,129,118],"color":"00000000"},{"Dx":0,"Dy":-1,"X":3,"Y":8,"Indices":[91,102],"color":"00000000"}]}'

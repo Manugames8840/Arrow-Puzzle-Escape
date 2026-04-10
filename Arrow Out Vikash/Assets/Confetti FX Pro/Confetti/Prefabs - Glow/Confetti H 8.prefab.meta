@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2855e5d2a4cd3444db0ac7b72034eb62
+timeCreated: 1589530811
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158889
+  packageName: Confetti FX Pro
+  packageVersion: 2.0
+  assetPath: Assets/Confetti FX Pro/Confetti/Prefabs - Glow/Confetti H 8.prefab
+  uploadId: 370778

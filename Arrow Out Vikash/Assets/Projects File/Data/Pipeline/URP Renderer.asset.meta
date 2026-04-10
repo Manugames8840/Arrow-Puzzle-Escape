@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f21be4a0f1fec2f43935b7bc24e543da
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Data/Pipeline/URP Renderer.asset
+  uploadId: 819880

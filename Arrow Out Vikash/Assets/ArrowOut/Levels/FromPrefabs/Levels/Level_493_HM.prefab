@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1807320762565605
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4516312066946642}
+  - component: {fileID: 114068474414492585}
+  m_Layer: 0
+  m_Name: Level_493_HM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4516312066946642
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807320762565605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114068474414492585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807320762565605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":17,"YSize":40,"Arrows":[{"Indices":[309,292,291,290,289,272,255,238,221,204,187,170,153,136,137,138,139,140,141,142,143,144,161,178,195,212,229,246,263,280,297,296,295,294,293],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[334,335,336,337,320,303,302,301,300,299,298,281,264,247,230,213,196,179,162,145,146,147,148,149,150,151,152,169,186,203,220,237,254,271,288,305,304],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[130,113,96,79,62,45,28,11,10,9,8,7,24,41,58,75,92,93,94,95],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[124,107,90,73,56,39,22,5,6,23,40,57,74,91,108,109,110,111,112,129,128,127,126,125],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[564,547,530,529,528,527,510,493,476,459,442,425,426,427,428,429,430,431,432,433,416,399,382,383,384,385,386,387,388,389,406,423,440,457,474,491,508,525,542,541,540,539,538,537,536,535,534,533,532,531],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[594,611,610,609,608,607,606,605,604,603,602,601,600,599,598,597,596,595],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[310,311,312,313,314],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[346,345,344,343,342,325,308,307,306,323,340,357,374,391,408,409,410,411,412,413,414,397,380,363,362,361],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[354,353,352,351,350,333,332,331,330,347,364,365,366,367],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[349,348],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[381,398,415],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[326,327,328,329],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[390,407,424,441,458,475,492,509,526,543,560,559,558,557,556,555,554,553,552,551,550,567,584,585,586,587,588,589,590,591,592,593,576,577],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[575,574,573,572,571],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[568,569,570],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[544,545,546,563,580,581,582,583,566,549],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[565,548],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[578,579,562,561],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[76,77,78,61,44,27],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[60,59,42,25,26,43],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[283,266,249,232,215,198,181,182,183,184,201,218,235,236,253,270],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[287,286,269,252,251,234,217,200],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[164,163,180,197,214,231,248,265,282],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[284,285,268,267,250,233,216,199],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[219,202,185,168,167,166,165],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[274,257,240,223,224,225,226,209,192,175],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[205,206,207,208],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[222,239,256,273],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[154,155,156,157,158,159,176,193,210,227,244,261,260,259],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[275,258,241,242,243],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[276,277,278,279,262,245,228,211,194,177,160],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[188,189,190,191,174,173,172,171],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[392,393,394,395,396,379,378,377],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[360,359,376,375,358,341,324],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[319,318,317,316,315],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[612,613,630],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[617,616,615,614,631,648,665,666,667,668,669,670,671,672,673,674,675,676,677,660,643],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[628,627,644],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[626,625,624,623,622,621,638,655,654,653,652,635,618],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[620,619,636,637],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[656,657,658,659,642,641],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[639,640],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[632,633,634,651,650,649],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[448,465,482,499,516,517,518,519,520,521,522,523,524,507,490,473,456,439,422,421,420,419,436,453,470,487,486,485],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[468,451,434,417,400,401,402,403,404,405],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[418,435,452,469],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[449,450,467,484,501,502],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[500,483,466],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[503,504,505,488,471,454,437],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[438,455,472,489,506],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[511,512,513,514,515,498,481,464,447,446,445,444],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[494,477,460,443],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[495,496,497,480,463,462,461,478,479],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[322,321,338,355,372,373,356,339],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false},{"Indices":[371,370,369,368],"color":"00000000","colorType":0,"colorIndex":0,"isCollected":false,"isClicked":false}],"ArrowPartData":[]}'

@@ -1,0 +1,1 @@
+{"size":{"x":17,"y":19},"timeLimit":180,"name":"","arrows":[{"nodes":[{"x":14,"y":15},{"x":10,"y":11}],"color":0},{"nodes":[{"x":14,"y":3},{"x":10,"y":7}],"color":4},{"nodes":[{"x":2,"y":3},{"x":3,"y":4},{"x":6,"y":7}],"color":3},{"nodes":[{"x":2,"y":15},{"x":3,"y":14},{"x":6,"y":11}],"color":2}],"wayBlockers":[],"blackHoles":[{"position":{"x":8,"y":9}}],"portals":[]}

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 8dda69099c3cc3546a760206f579c1c6
+timeCreated: 1589444117
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158889
+  packageName: Confetti FX Pro
+  packageVersion: 2.0
+  assetPath: Assets/Confetti FX Pro/Background/Plane.mat
+  uploadId: 370778

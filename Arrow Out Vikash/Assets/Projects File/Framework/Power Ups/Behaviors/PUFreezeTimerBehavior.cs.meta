@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 2f413cdf9719f1f4f8d5d7687cc660c4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 322815
+  packageName: Block Jam | Template + Editor
+  packageVersion: 1.0.0
+  assetPath: Assets/Project Files/Game/Scripts/Power Ups/Behaviors/PUFreezeTimerBehavior.cs
+  uploadId: 819880

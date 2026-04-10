@@ -1,0 +1,172 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: C_06_B
+  m_Shader: {fileID: 4800000, guid: ac3b13e0a4121dd4589dc8fa1d8c5b8e, type: 3}
+  m_ValidKeywords:
+  - _Clip_Lenght
+  - _UseBurn_ByUV
+  - _Use_CartoonSpec
+  - _Use_FixedValueShadow
+  - _Use_TexClip_InMesh
+  - _Use_WorldPosComputerBuffer
+  m_InvalidKeywords:
+  - _FLASH_Reversal
+  - _TransparentWrightDepth
+  - _UseBestSpecular
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _BurnMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _MainTex:
+        m_Texture: {fileID: 2800000, guid: 9b832693f74bc424fbfd4715988037d4, type: 3}
+        m_Scale: {x: 10, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _SpecularHighLight:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _TopLine:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats:
+      _BreatheIntensity: 0.8
+      _BreatheSpeed: 1
+      _BumpScale: 1
+      _BurnAmount: 0.2
+      _CenterLenght: 1
+      _CenterShowLenght: 1
+      _Clip_Lenght: 1
+      _CullMode: 2
+      _CutOff: 0.5
+      _Cutoff: 0.5
+      _DetailNormalMapScale: 1
+      _DstBlend: 0
+      _EMISSIONBREATHE: 0
+      _EmissionIntensity: 1
+      _FLASH: 0
+      _FLASH_AlphaOverrider: 0
+      _FLASH_Auto: 0
+      _FLASH_Reversal: 1
+      _FLASH_Type2: 0
+      _FlashFrequency: 1
+      _FlashOffset: 0.05
+      _FlashProcess: 0.25
+      _FlashReversal: 0
+      _FresnelBias: 0
+      _FresnelPower: 5
+      _FresnelStrength: 3
+      _GlossMapScale: 1
+      _Glossiness: 0.5
+      _GlossyReflections: 1
+      _GridLayoutSize: 10
+      _JustTip: 1
+      _LineWidth: 0.1
+      _Metallic: 0
+      _Mode: 0
+      _OcclusionStrength: 1
+      _Outline_ClipOffset: -0.01
+      _Outline_Scale: 0.1
+      _Outline_UseClipOffset: 0
+      _Parallax: 0.02
+      _QuadCalNormal: 0
+      _QuadCalNormalYScale: 1
+      _RampSmooth: 0.574
+      _RampThreshold: 0.77
+      _ReversalSpecFade: 1
+      _ReversalSpecIntensity: 0.02
+      _ReversalSpecSmooth: 0.872
+      _ReversalSpecThreshold: 0.225
+      _Shininess: 0
+      _SmoothnessTextureChannel: 0
+      _SpecIntensity: 2
+      _SpecPower: 13.6
+      _SpecSmooth: 0.095
+      _SpecThreshold: 0.177
+      _SpecularHighlights: 1
+      _Specular_Reversal: 0
+      _SrcBlend: 1
+      _Transparent: 0.5
+      _TransparentWrightDepth: 1
+      _USEEMISSION: 0
+      _USEEMISSION_AlphaOverrider: 0
+      _USEFRESNELSPEC: 0
+      _USENORMALMAP: 0
+      _USE_OUTLINE: 0
+      _UVSec: 0
+      _UV_EdgeColor_ByX: 0
+      _UV_EdgeRange: 0.1
+      _UseBestRamp: 0
+      _UseBestSpecular: 1
+      _UseBurn: 0
+      _UseBurn_ByUV: 1
+      _UseBurn_ByUV2_GridLayout: 0
+      _UseBurn_ByUV2_y: 0
+      _UseFresnel: 0
+      _UseNormalMap: 0
+      _UseSpecular: 0
+      _UseTransparent: 0
+      _Use_AlphaIsSpec: 0
+      _Use_BlinnPhong: 0
+      _Use_CartoonSpec: 1
+      _Use_FixedValueShadow: 1
+      _Use_FourDirectionLine: 0
+      _Use_LocalPosComputerBuffer: 0
+      _Use_PosComputerBuffer: 0
+      _Use_PureColor: 0
+      _Use_ReceiveShadow: 0
+      _Use_SimpleSpec: 0
+      _Use_SimpleStandardSpec: 0
+      _Use_SpecularHighLight: 0
+      _Use_TexClip: 0
+      _Use_TexClip_ColorOverride: 0
+      _Use_TexClip_InMesh: 1
+      _Use_TexClip_InUV: 0
+      _Use_UVEdgeColor: 0
+      _Use_UnityStandardSpec: 0
+      _Use_ViewSpec: 0
+      _Use_WorldPosComputerBuffer: 1
+      _YBurnFixValue: 0.5
+      _YBurnWidth: 0.15
+      _ZWrite: 1
+      _fresnelCoefficient: 0.8
+    m_Colors:
+      _BurnFirstColor: {r: 1, g: 0, b: 0, a: 1}
+      _BurnSecondColor: {r: 1, g: 0, b: 0, a: 1}
+      _Color: {r: 1, g: 1, b: 1, a: 1}
+      _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+      _F0: {r: 0.04, g: 0.04, b: 0.04, a: 1}
+      _FlashColor: {r: 1, g: 1, b: 1, a: 1}
+      _HColor: {r: 1, g: 1, b: 1, a: 1}
+      _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+      _ReversalSpecularColor: {r: 0.08276967, g: 0.5660378, b: 0.50091654, a: 1}
+      _SColor: {r: 1, g: 1, b: 1, a: 1}
+      _SpecularColor: {r: 0.06968674, g: 0.509434, b: 0.45059454, a: 1}
+      _UV_EdgeColor: {r: 1, g: 1, b: 1, a: 1}
+      _Z_Offset: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

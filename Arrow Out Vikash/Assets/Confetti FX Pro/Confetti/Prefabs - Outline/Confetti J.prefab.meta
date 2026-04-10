@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 0275f73c6f7758a4885d2fb9c1ed6660
+timeCreated: 1590049126
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158889
+  packageName: Confetti FX Pro
+  packageVersion: 2.0
+  assetPath: Assets/Confetti FX Pro/Confetti/Prefabs - Outline/Confetti J.prefab
+  uploadId: 370778

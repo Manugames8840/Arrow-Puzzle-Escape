@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1879347914714852
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4833428023141213}
+  - component: {fileID: 114128339606798495}
+  m_Layer: 0
+  m_Name: Level_14_json
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4833428023141213
+Transform:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879347914714852}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114128339606798495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879347914714852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e95bc5f748b9dbed436f45b39fe0f40, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  jsonString: '{"XSize":8,"YSize":10,"Arrows":[{"Dx":0,"Dy":1,"X":3,"Y":9,"Indices":[75,67,59,51,43,35,27,28,36,44,52,60,68,76,77,78,79,71,63,55,47,39,31,23,15,7,6,5,4,3,2,1,0,8],"BendCount":0},{"Dx":1,"Dy":0,"X":6,"Y":8,"Indices":[70,69,61,62,54,46,38,30,22,14,13,12,20,19,18],"BendCount":6},{"Dx":0,"Dy":1,"X":5,"Y":6,"Indices":[53,45,37,29,21],"BendCount":0},{"Dx":1,"Dy":0,"X":3,"Y":1,"Indices":[11,10,9,17,16,24,32,40,48,56,64,72,73,74,66,65],"BendCount":6},{"Dx":1,"Dy":0,"X":2,"Y":7,"Indices":[58,57,49,41,33,25,26,34,42,50],"BendCount":3}]}'

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1083005922008",
+    "project_id": "arrow-puzzle-escape-game",
+    "storage_bucket": "arrow-puzzle-escape-game.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1083005922008:android:90dbfe768e6cff816905ad",
+        "android_client_info": {
+          "package_name": "com.ManuGames.ArrowPuzzleEscape"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqMAh6IcO235xo1eSIrViIz0IwckXrsOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

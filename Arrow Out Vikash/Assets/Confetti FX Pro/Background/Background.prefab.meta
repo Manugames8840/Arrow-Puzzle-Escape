@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: ce21595a5822be2439849da9bf063776
+timeCreated: 1589790225
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158889
+  packageName: Confetti FX Pro
+  packageVersion: 2.0
+  assetPath: Assets/Confetti FX Pro/Background/Background.prefab
+  uploadId: 370778

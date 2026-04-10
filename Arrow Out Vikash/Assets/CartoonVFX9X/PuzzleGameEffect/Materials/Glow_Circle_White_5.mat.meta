@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ab9211e1fa0f6a540a4149468c131f3c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 249305
+  packageName: Puzzle Game Effect Collection - URP
+  packageVersion: 1.0
+  assetPath: Assets/CartoonVFX9X/PuzzleGameEffect/Materials/Glow_Circle_White_5.mat
+  uploadId: 569862
