@@ -14,6 +14,11 @@ namespace Watermelon
 		public static event SimpleCallback OnInputActivated;
 		public static event SimpleCallback OnObjectTouched;
 
+		// Position where the pointer was first pressed this interaction
+		private static Vector2 pressStartPosition;
+		// Max pixels the pointer can move and still count as a tap (not a drag)
+		private const float DRAG_THRESHOLD_PX = 10f;
+
 		public void Init()
 		{
 			isActive = true;
@@ -31,6 +36,9 @@ namespace Watermelon
 				// Return if clicking on any UI element
 				if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
 					return;
+
+				// Record where the press started so we can detect drags on release
+				pressStartPosition = InputController.MousePosition;
 
 				Ray ray = Camera.main.ScreenPointToRay(InputController.MousePosition);
 				RaycastHit hit;
@@ -62,9 +70,19 @@ namespace Watermelon
 					}
 				}
 			}
-			else if (InputController.ClickAction.WasReleasedThisFrame() && LevelController._currentSelectedArrow != null)
+			else if (InputController.ClickAction.WasReleasedThisFrame())
 			{
-				LevelController.OnObjectReleased();
+				// Only fire OnObjectReleased if the pointer hasn't moved significantly
+				// since the press — i.e. this is a tap, not a pan/drag gesture.
+				float dragDistance = Vector2.Distance(InputController.MousePosition, pressStartPosition);
+				if (dragDistance <= DRAG_THRESHOLD_PX)
+				{
+					LevelController.OnObjectReleased();
+				}
+				else
+				{
+					LevelController.OnArrowRemoved();
+				}
 			}
 		}
 

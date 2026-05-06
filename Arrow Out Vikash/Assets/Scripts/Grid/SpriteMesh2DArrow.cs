@@ -1,3 +1,4 @@
+using Framework.Core;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace ArrowOut
 		private Sprite bodySpriteAlt; // Alternate body sprite for variety
 		private Sprite cornerSprite;  // Different sprite for corners
 		private Sprite connectorSprite; // Small connector between segments
+		private TweenCase shakeTweenCase;
 
 		private IArrowInputHandler parentArrow;
 
@@ -65,6 +67,13 @@ namespace ArrowOut
 		void OnMouseUp()
 		{
 			parentArrow?.MouseUp();
+		}
+
+		public void OnClickBlocked()
+		{
+			CameraShake.Shake(0.3f, 0.2f);
+			shakeTweenCase.KillActive();
+			shakeTweenCase = transform.DOShake(0.05f, 0.15f);
 		}
 
 		public void ShowPreview(List<Vector2Int> previewPath)

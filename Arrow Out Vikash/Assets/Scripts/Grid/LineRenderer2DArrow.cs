@@ -10,7 +10,7 @@ namespace ArrowOut
 		private readonly List<BoxCollider> segmentColliders = new List<BoxCollider>();
 		[SerializeField] private int cornerResolution = 10;
 		[SerializeField] private float cornerRadius = 0.1f;
-		[SerializeField] private float colliderWidth = 0.85f; // Should match lineRenderer width
+		[SerializeField] private float colliderWidth = 1f; // Should match lineRenderer width
 
 		private LineRenderer lineRenderer;
 		private LineRenderer previewLineRenderer;
@@ -153,7 +153,7 @@ namespace ArrowOut
 
 				Vector2 localMid = (localStart + localEnd) * 0.5f;
 				float length = Vector2.Distance(localStart, localEnd);
-				Vector2 direction = localEnd - localStart; 
+				Vector2 direction = localEnd - localStart;
 				float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
 				// Create child GameObject for the segment
@@ -191,6 +191,7 @@ namespace ArrowOut
 
 		public void OnClickBlocked()
 		{
+			CameraShake.Shake(0.3f, 0.2f);
 			shakeTweenCase.KillActive();
 			shakeTweenCase = transform.DOShake(0.05f, 0.15f);
 		}

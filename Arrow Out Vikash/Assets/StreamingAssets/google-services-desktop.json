@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1083005922008:android:90dbfe768e6cff816905ad",
+        "mobilesdk_app_id": "1:1083005922008:android:f9e12f3d3bff6b556905ad",
         "android_client_info": {
-          "package_name": "com.ManuGames.ArrowPuzzleEscape"
+          "package_name": "com.manugames.arrowpuzzleescape"
         }
       },
       "oauth_client": [],

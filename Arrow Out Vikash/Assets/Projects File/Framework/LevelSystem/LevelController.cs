@@ -171,6 +171,7 @@ namespace Framework
 
 		public static void SubstractMove()
 		{
+			_currentSelectedArrow = null;
 			GameplayMove?.Substract(1);
 		}
 
@@ -225,7 +226,6 @@ namespace Framework
 		public static void OnObjectReleased()
 		{
 			_currentSelectedArrow?.MouseUp();
-			_currentSelectedArrow = null;
 		}
 
 		public static void InvokeOrWait(SimpleCallback loadCallback)

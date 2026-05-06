@@ -1,9 +1,10 @@
-﻿using UnityEditor;
+using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 using System;
 using System.Linq;
 using UnityEditor.PackageManager.Requests;
+using Framework;
 
 public class LevelEditor : EditorWindow
 {
@@ -26,10 +27,21 @@ public class LevelEditor : EditorWindow
 	PaintTool currentTool = PaintTool.Arrow;
 
 	// ================= DATA =================
+	[SerializeField]
+	List<Color> colorPalette = new List<Color>() {
+		new Color(1f, 0.4f, 0.4f), // Red
+		new Color(0.4f, 1f, 0.4f), // Green
+		new Color(0.4f, 0.6f, 1f), // Blue
+		new Color(1f, 1f, 0.4f),   // Yellow
+		new Color(1f, 0.4f, 1f)    // Magenta
+	};
 	Dictionary<Vector2Int, ArrowPath> arrows = new();
 	HashSet<Vector2Int> blockers = new();
 	HashSet<Vector2Int> holes = new();
 	HashSet<Vector2Int> portals = new();
+    // Swap selection indices for level preview grid
+    int swapFirstIndex = -1;
+    int swapSecondIndex = -1;
 
 	// ================= SELECTION =================
 	ArrowPath selectedArrow = null;
@@ -39,7 +51,8 @@ public class LevelEditor : EditorWindow
 	LevelDatabase database;
 	LevelData selectedLevel;
 	int selectedLevelIndex = -1;
-	Vector2 levelListScroll;
+	Vector2 levelListScroll; // Scroll for level list
+    Vector2 levelPreviewScroll; // Scroll for level preview panel
 	int currentPage = 0;
 
 	// ================= DRAW STATE =================
@@ -59,6 +72,15 @@ public class LevelEditor : EditorWindow
 	{
 		wantsMouseMove = true; // Enable mouse move events for better drawing
 		LoadDatabase();
+	}
+
+	void OnDisable()
+	{
+		foreach (var tex in texCache.Values)
+		{
+			if (tex != null) DestroyImmediate(tex);
+		}
+		texCache.Clear();
 	}
 
 	void LoadDatabase()
@@ -81,13 +103,14 @@ public class LevelEditor : EditorWindow
 	}
 
 	// ================= GUI =================
-	void OnGUI()
-	{
-		GUILayout.BeginHorizontal();
+    void OnGUI()
+    {
+        GUILayout.BeginHorizontal();
 
-		DrawLevelListPanel();
-		DrawGridPanel();
-		DrawRightPanel();
+        DrawLevelListPanel();
+        DrawLevelGridPanel(); // New grid view of levels
+        DrawGridPanel();
+        DrawRightPanel();
 
 		GUILayout.EndHorizontal();
 
@@ -236,9 +259,21 @@ public class LevelEditor : EditorWindow
 
 		GUI.enabled = true;
 		GUILayout.EndHorizontal();
+        GUILayout.Space(10);
 
-		// ===== NEW LEVEL BUTTON =====
-		GUILayout.Space(8);
+        // ===== NEW LEVEL BUTTON =====
+        GUILayout.Space(8);
+        // ----- Swap Buttons -----
+        GUI.enabled = swapFirstIndex >= 0 && swapSecondIndex >= 0;
+        if (GUILayout.Button("Swap Selected Levels", GUILayout.Height(30)))
+        {
+            SwapSelectedLevels();
+        }
+        GUI.enabled = true;
+        if (GUILayout.Button("Unselect All", GUILayout.Height(30)))
+        {
+            UnselectSwapLevels();
+        }
 
 		GUIStyle newLevelButtonStyle = new GUIStyle(GUI.skin.button);
 		newLevelButtonStyle.fontStyle = FontStyle.Bold;
@@ -360,20 +395,63 @@ public class LevelEditor : EditorWindow
 		AssetDatabase.SaveAssets();
 	}
 
+	void ApplyPaletteToArrows()
+	{
+		if (colorPalette == null || colorPalette.Count == 0) return;
+		if (arrows == null || arrows.Count == 0) return;
+
+		int i = 0;
+		foreach (var arrow in arrows.Values)
+		{
+			arrow.color = colorPalette[i % colorPalette.Count];
+			i++;
+		}
+		SaveCurrentLevel();
+		Repaint();
+	}
+
+	void ApplyPaletteToAllLevels()
+	{
+		if (colorPalette == null || colorPalette.Count == 0) return;
+		if (database == null || database.levels == null) return;
+
+		foreach (var level in database.levels)
+		{
+			if (level == null || level.arrowPaths == null) continue;
+
+			int i = 0;
+			foreach (var arrow in level.arrowPaths)
+			{
+				arrow.color = colorPalette[i % colorPalette.Count];
+				i++;
+			}
+			EditorUtility.SetDirty(level);
+		}
+		
+		AssetDatabase.SaveAssets();
+
+		if (selectedLevel != null)
+		{
+			LoadLevelData(selectedLevel);
+		}
+
+		Repaint();
+	}
+
 	// ================= AUTO-SCALING =================
 	void CalculateCellSize()
 	{
 		// Calculate available space for grid
-		float availableWidth = position.width - LEFT_PANEL_WIDTH - RIGHT_PANEL_WIDTH - 40;
-		float availableHeight = Mathf.Min(position.height - 100, MAX_GRID_HEIGHT);
+		float availableWidth = position.width - (LEFT_PANEL_WIDTH * 2) - RIGHT_PANEL_WIDTH - 40;
+		float availableHeight = position.height - 100;
 
 		// Calculate cell size to fit both dimensions
-		float cellSizeForWidth = availableWidth / width;
-		float cellSizeForHeight = availableHeight / height;
+		float cellSizeForWidth = width > 0 ? availableWidth / width : BASE_CELL_SIZE;
+		float cellSizeForHeight = height > 0 ? availableHeight / height : BASE_CELL_SIZE;
 
 		// Use the smaller value to ensure grid fits
 		currentCellSize = Mathf.Min(cellSizeForWidth, cellSizeForHeight);
-		currentCellSize = Mathf.Max(currentCellSize, MIN_CELL_SIZE); // Ensure minimum size
+		currentCellSize = Mathf.Max(currentCellSize, 2f); // Lower minimum size to allow large grids to fit
 		currentCellSize = Mathf.Min(currentCellSize, BASE_CELL_SIZE); // Cap at base size
 	}
 
@@ -544,8 +622,16 @@ public class LevelEditor : EditorWindow
 					Vector2Int last = currentPath[^1];
 					if (IsNeighbour(last, cell) && !currentPath.Contains(cell))
 					{
-						currentPath.Add(cell);
-						Repaint();
+						// Only add the cell to the path if the cursor is near the center of the cell
+						Vector2 cellCenter = GetCellCenter(gridRect, cell);
+						float distanceToCenter = Vector2.Distance(e.mousePosition, cellCenter);
+						float threshold = currentCellSize * 0.35f; // Must be within inner 70% of the cell
+
+						if (distanceToCenter <= threshold)
+						{
+							currentPath.Add(cell);
+							Repaint();
+						}
 					}
 				}
 				e.Use();
@@ -774,27 +860,68 @@ public class LevelEditor : EditorWindow
 		);
 	}
 
-	// ================= RIGHT PANEL =================
-	void DrawRightPanel()
-	{
+	    // ================= RIGHT PANEL =================
+    void DrawRightPanel()
+    {
 		GUILayout.BeginVertical(GUILayout.Width(RIGHT_PANEL_WIDTH));
 
 		GUI.enabled = selectedLevel != null;
 
-		GUILayout.Label("Grid Settings", EditorStyles.boldLabel);
+		        GUILayout.Label("Grid Settings", EditorStyles.boldLabel);
 
-		EditorGUI.BeginChangeCheck();
-		int newWidth = EditorGUILayout.IntField("Width", width);
-		int newHeight = EditorGUILayout.IntField("Height", height);
-		timeLimit = EditorGUILayout.FloatField("Time Limit", timeLimit);
+        EditorGUI.BeginChangeCheck();
+		        int newWidth = EditorGUILayout.IntField("Width", width);
+        int newHeight = EditorGUILayout.IntField("Height", height);
+        timeLimit = EditorGUILayout.FloatField("Time Limit", timeLimit);
 
-		if (EditorGUI.EndChangeCheck() && selectedLevel != null)
-		{
+        if (EditorGUI.EndChangeCheck() && selectedLevel != null)
+        {
 			width = newWidth;
 			height = newHeight;
 			CalculateCellSize();
 			SaveCurrentLevel();
 		}
+
+		GUILayout.Space(10);
+
+		// ================= COLOR PALETTE =================
+		GUILayout.Label("Default Color Palette", EditorStyles.boldLabel);
+		
+		for (int i = 0; i < colorPalette.Count; i++)
+		{
+			GUILayout.BeginHorizontal();
+			colorPalette[i] = EditorGUILayout.ColorField(colorPalette[i]);
+			if (GUILayout.Button("X", GUILayout.Width(25)))
+			{
+				colorPalette.RemoveAt(i);
+				i--;
+			}
+			GUILayout.EndHorizontal();
+		}
+		
+		if (GUILayout.Button("+ Add Color"))
+		{
+			colorPalette.Add(Color.white);
+		}
+		
+		GUILayout.BeginHorizontal();
+		GUI.enabled = colorPalette.Count > 0 && selectedLevel != null;
+		if (GUILayout.Button("Apply to Level", GUILayout.Height(20)))
+		{
+			ApplyPaletteToArrows();
+		}
+		
+		GUI.enabled = colorPalette.Count > 0 && database != null;
+		if (GUILayout.Button("Apply to All Levels", GUILayout.Height(20)))
+		{
+			if (EditorUtility.DisplayDialog("Apply Palette to All Levels", 
+				"Are you sure you want to overwrite arrow colors in all levels with this palette?", "Yes", "Cancel"))
+			{
+				ApplyPaletteToAllLevels();
+			}
+		}
+		GUI.enabled = selectedLevel != null;
+		GUILayout.EndHorizontal();
 
 		GUILayout.Space(10);
 
@@ -828,9 +955,9 @@ public class LevelEditor : EditorWindow
 			new[] { "Arrow", "Blocker", "Hole", "Portal", "Eraser" }
 		);
 
-		GUILayout.Space(10);
+        GUILayout.Space(10);
 
-		// Instructions
+        // ----- Swap Buttons (already added in list panel) -----
 		GUIStyle helpStyle = new GUIStyle(EditorStyles.helpBox);
 		helpStyle.fontSize = 11;
 		helpStyle.wordWrap = true;
@@ -883,10 +1010,176 @@ public class LevelEditor : EditorWindow
 
 		GUI.enabled = true;
 
+		// ================= PLAY LEVEL BUTTON =================
+		GUILayout.Space(15);
+
+		GUI.enabled = selectedLevel != null && !EditorApplication.isPlaying;
+
+		GUIStyle playButtonStyle = new GUIStyle(GUI.skin.button);
+		playButtonStyle.fontStyle = FontStyle.Bold;
+		playButtonStyle.fontSize = 14;
+		playButtonStyle.normal.background = MakeTex(2, 2, new Color(0.1f, 0.5f, 0.9f));
+		playButtonStyle.normal.textColor = Color.white;
+		playButtonStyle.hover.background = MakeTex(2, 2, new Color(0.15f, 0.6f, 1f));
+		playButtonStyle.hover.textColor = Color.white;
+		playButtonStyle.active.background = MakeTex(2, 2, new Color(0.08f, 0.4f, 0.75f));
+		playButtonStyle.active.textColor = Color.white;
+
+		if (GUILayout.Button("▶  Play This Level", playButtonStyle, GUILayout.Height(40)))
+		{
+			PlaySelectedLevel();
+		}
+
+		if (EditorApplication.isPlaying)
+		{
+			GUIStyle stopStyle = new GUIStyle(GUI.skin.button);
+			stopStyle.fontStyle = FontStyle.Bold;
+			stopStyle.fontSize = 12;
+			stopStyle.normal.background = MakeTex(2, 2, new Color(0.8f, 0.2f, 0.2f));
+			stopStyle.normal.textColor = Color.white;
+			stopStyle.hover.background = MakeTex(2, 2, new Color(0.9f, 0.25f, 0.25f));
+
+			if (GUILayout.Button("■  Stop Playing", stopStyle, GUILayout.Height(30)))
+			{
+				EditorApplication.isPlaying = false;
+			}
+		}
+
+		GUI.enabled = true;
 		GUILayout.EndVertical();
 	}
 
-	// ================= HELPERS =================
+	void PlaySelectedLevel()
+	{
+		if (selectedLevel == null || selectedLevelIndex < 0)
+		{
+			EditorUtility.DisplayDialog("No Level Selected", "Please select a level to play.", "OK");
+			return;
+		}
+
+		// Save any pending changes before playing
+		SaveCurrentLevel();
+
+		// Use the framework's editor-time method to persist the level index to disk.
+		// This survives domain reload + scene transitions.
+		// selectedLevelIndex is the index in database.levels list (what the game expects).
+		ActiveSession.SetEditorLevelIndex(selectedLevelIndex);
+
+		// Also persist the asset path for SpecificVariationToLoad as backup
+		string assetPath = AssetDatabase.GetAssetPath(selectedLevel);
+		SessionState.SetString(LevelEditorPlayModeHandler.PLAY_LEVEL_KEY, assetPath);
+
+		Debug.Log($"[LevelEditor] Playing level: {selectedLevel.name} (index: {selectedLevelIndex})");
+
+		// Enter Play Mode
+		EditorApplication.isPlaying = true;
+	}
+
+	// ================= LEVEL GRID PREVIEW =================
+	void DrawLevelGridPanel()
+    {
+        if (database == null) return;
+        int totalLevelCount = database.levels.Count;
+        int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)totalLevelCount / PAGE_SIZE));
+        int currentPageClamped = Mathf.Clamp(currentPage, 0, totalPages - 1);
+        int startIndex = currentPageClamped * PAGE_SIZE;
+        int endIndex = Mathf.Min(startIndex + PAGE_SIZE, totalLevelCount);
+        float previewSize = 150f; // larger preview size
+        GUIStyle selectedStyle = new GUIStyle(GUI.skin.box);
+        selectedStyle.normal.background = MakeTex(2, 2, new Color(0.2f, 0.5f, 0.8f));
+        // Scroll view for vertical list
+        levelPreviewScroll = GUILayout.BeginScrollView(levelPreviewScroll, GUILayout.Width(LEFT_PANEL_WIDTH), GUILayout.ExpandHeight(true));
+        for (int idx = startIndex; idx < endIndex; idx++)
+        {
+            LevelData lvl = database.levels[idx];
+            
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            
+            // Container for preview and optional border
+            Rect previewRect = GUILayoutUtility.GetRect(previewSize, previewSize, GUILayout.ExpandWidth(false), GUILayout.ExpandHeight(false));
+            // Highlight if selected for swap
+            if (idx == swapFirstIndex || idx == swapSecondIndex)
+                EditorGUI.DrawRect(previewRect, new Color(0.2f, 0.5f, 0.8f, 0.4f));
+            DrawLevelPreview(lvl, previewRect);
+            // Click handling for swap selection
+            Event e = Event.current;
+            if (e.type == EventType.MouseDown && e.button == 0 && previewRect.Contains(e.mousePosition))
+            {
+                e.Use();
+                RegisterSwapSelection(idx);
+            }
+            
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+            
+            GUILayout.Space(10);
+        }
+        GUILayout.EndScrollView();
+    }
+
+    void DrawLevelPreview(LevelData level, Rect rect)
+    {
+        // Simple rendering: draw arrows onto small grid
+        float cellSize = Mathf.Min(rect.width / level.width, rect.height / level.height);
+        Handles.BeginGUI();
+        // Background
+        EditorGUI.DrawRect(rect, new Color(0.12f, 0.12f, 0.12f));
+        // Draw arrows
+        foreach (var arrowPath in level.arrowPaths)
+        {
+            if (arrowPath.body == null || arrowPath.body.Count < 2) continue;
+            for (int i = 0; i < arrowPath.body.Count - 1; i++)
+            {
+                Vector2 p1 = rect.position + new Vector2(arrowPath.body[i].x * cellSize + cellSize / 2, (level.height - 1 - arrowPath.body[i].y) * cellSize + cellSize / 2);
+                Vector2 p2 = rect.position + new Vector2(arrowPath.body[i + 1].x * cellSize + cellSize / 2, (level.height - 1 - arrowPath.body[i + 1].y) * cellSize + cellSize / 2);
+                Handles.color = arrowPath.color;
+                Handles.DrawAAPolyLine(2f, p1, p2);
+            }
+        }
+        Handles.EndGUI();
+    }
+
+    void RegisterSwapSelection(int idx)
+    {
+        if (swapFirstIndex == idx) return;
+        if (swapFirstIndex < 0)
+        {
+            swapFirstIndex = idx;
+        }
+        else if (swapSecondIndex < 0 && idx != swapFirstIndex)
+        {
+            swapSecondIndex = idx;
+        }
+        else
+        {
+            // Reset selection to new first
+            swapFirstIndex = idx;
+            swapSecondIndex = -1;
+        }
+        Repaint();
+    }
+
+    void UnselectSwapLevels()
+    {
+        swapFirstIndex = -1;
+        swapSecondIndex = -1;
+        Repaint();
+    }
+
+    void SwapSelectedLevels()
+    {
+        if (swapFirstIndex < 0 || swapSecondIndex < 0) return;
+        var temp = database.levels[swapFirstIndex];
+        database.levels[swapFirstIndex] = database.levels[swapSecondIndex];
+        database.levels[swapSecondIndex] = temp;
+        EditorUtility.SetDirty(database);
+        AssetDatabase.SaveAssets();
+        UnselectSwapLevels();
+        Repaint();
+    }
+
+    // ================= HELPERS =================
 	Vector2Int GetCellFromMouse(Rect grid, Vector2 mouse)
 	{
 		float relativeX = mouse.x - grid.x;
@@ -921,12 +1214,19 @@ public class LevelEditor : EditorWindow
 
 	bool IsNeighbour(Vector2Int a, Vector2Int b)
 	{
-		return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y) == 1;
+		int dx = Mathf.Abs(a.x - b.x);
+		int dy = Mathf.Abs(a.y - b.y);
+		return (dx <= 1 && dy <= 1) && (dx != 0 || dy != 0);
 	}
 
 	// Helper to create colored textures for UI
+	Dictionary<Color, Texture2D> texCache = new Dictionary<Color, Texture2D>();
+
 	Texture2D MakeTex(int width, int height, Color col)
 	{
+		if (texCache.TryGetValue(col, out Texture2D tex) && tex != null)
+			return tex;
+
 		Color[] pix = new Color[width * height];
 		for (int i = 0; i < pix.Length; i++)
 			pix[i] = col;
@@ -934,6 +1234,70 @@ public class LevelEditor : EditorWindow
 		Texture2D result = new Texture2D(width, height);
 		result.SetPixels(pix);
 		result.Apply();
+		
+		texCache[col] = result;
 		return result;
+	}
+}
+
+
+/// <summary>
+/// Survives domain reload: injects the selected level into LevelController
+/// before any MonoBehaviour Awake/Start runs.
+/// [InitializeOnLoad] static constructor runs during domain reload,
+/// which is BEFORE scene load and BEFORE any MonoBehaviour.
+/// </summary>
+[InitializeOnLoad]
+public static class LevelEditorPlayModeHandler
+{
+	public const string PLAY_LEVEL_KEY = "LevelEditor_PlayLevelPath";
+
+	static LevelEditorPlayModeHandler()
+	{
+		// Inject the level immediately during domain reload (before scene load).
+		// This ensures LevelController.SpecificVariationToLoad is set
+		// BEFORE LevelController.Init() runs in Awake/Start.
+		if (EditorApplication.isPlayingOrWillChangePlaymode)
+		{
+			InjectLevelIfPending();
+		}
+
+		// Register callback to clean up when exiting play mode
+		EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+	}
+
+	private static void InjectLevelIfPending()
+	{
+		string levelPath = SessionState.GetString(PLAY_LEVEL_KEY, "");
+		if (string.IsNullOrEmpty(levelPath)) return;
+
+		LevelData level = AssetDatabase.LoadAssetAtPath<LevelData>(levelPath);
+		if (level != null)
+		{
+			LevelController.SpecificVariationToLoad = level;
+			Debug.Log($"[LevelEditor] Injected level for play: {level.name}");
+		}
+		else
+		{
+			Debug.LogWarning($"[LevelEditor] Could not load level at path: {levelPath}");
+		}
+
+		// Clear after consuming so normal play works next time
+		SessionState.EraseString(PLAY_LEVEL_KEY);
+	}
+
+	private static void OnPlayModeStateChanged(PlayModeStateChange state)
+	{
+		// Fallback: also try injecting when entering play mode
+		if (state == PlayModeStateChange.EnteredPlayMode)
+		{
+			InjectLevelIfPending();
+		}
+
+		// Clean up when exiting play mode
+		if (state == PlayModeStateChange.ExitingPlayMode)
+		{
+			SessionState.EraseString(PLAY_LEVEL_KEY);
+		}
 	}
 }

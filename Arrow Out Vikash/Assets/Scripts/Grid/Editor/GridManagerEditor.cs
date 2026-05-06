@@ -1,3 +1,4 @@
+using Framework.Core;
 using UnityEditor;
 using UnityEngine;
 
@@ -87,6 +88,8 @@ namespace ArrowOut
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("gridDotPrefab"), new GUIContent("Grid Dot Prefab"));
 				EditorGUILayout.PropertyField(serializedObject.FindProperty("gridDotColor"), new GUIContent("Grid Dot Color"));
 			});
+
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("_cameraController"));
 
 			EditorGUILayout.Space(10);
 

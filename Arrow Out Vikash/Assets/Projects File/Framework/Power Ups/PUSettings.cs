@@ -29,6 +29,9 @@ namespace Watermelon
         [SerializeField] FeatureAnnouncementPopupData announcementPopupData;
         public FeatureAnnouncementPopupData AnnouncementPopupData => announcementPopupData;
 
+		[Group("Is This PowerUp Free")]
+		public bool IsFree;
+
         [Group("Variables")]
         [SerializeField] int defaultAmount;
         public int DefaultAmount => defaultAmount;

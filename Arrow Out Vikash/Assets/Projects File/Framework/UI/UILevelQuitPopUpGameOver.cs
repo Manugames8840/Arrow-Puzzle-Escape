@@ -1,3 +1,4 @@
+using Base.UI.Manager;
 using Framework;
 using Framework.Core;
 using TMPro;
@@ -43,24 +44,23 @@ namespace Framework
 		public void ExitPopCloseButton()
 		{
 			AudioController.PlaySound(AudioController.AudioClips.buttonSound);
-
 			UIController.HidePage<UILevelQuitPopUpGameOver>();
-
 			pageClosed?.Invoke(false);
 			pageClosed = null;
+			replayPressed = null;
 		}
 
 		public void ReplayGame()
 		{
 			AudioController.PlaySound(AudioController.AudioClips.buttonSound);
 			replayPressed?.Invoke(true);
-			GameController.Replay();
 			pageClosed = null;
+			replayPressed = null;
 		}
 
 		public static void Show(SimpleBoolCallback onPageClosed = null, SimpleBoolCallback onReplayButtonClicked = null, bool isGameOverScreen = false)
 		{
-			if (!LivesSystem.IsLocked || LivesSystem.InfiniteMode)
+			if (LivesSystem.IsLocked || LivesSystem.InfiniteMode)
 			{
 				onPageClosed?.Invoke(true);
 				return;

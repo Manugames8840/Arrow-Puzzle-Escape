@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Framework;
 using Framework.Core;
+using System;
 
 namespace Framework
 {
@@ -74,13 +75,6 @@ namespace Framework
 		}
 
 		#region Buttons 
-		public void OnReplayButtonClicked()
-		{
-			GameController.Replay();
-
-			AudioController.PlaySound(AudioController.AudioClips.buttonSound);
-		}
-
 		private void OnReviveButtonClicked()
 		{
 			AdsManager.ShowRewardBasedVideo((reward) =>
@@ -131,29 +125,17 @@ namespace Framework
 
 		private void OnCloseButtonClicked()
 		{
-			LivesSystem.LockLife();
+			AudioController.PlaySound(AudioController.AudioClips.buttonSound);
 			UILevelQuitPopUpGameOver.Show((confirmed) =>
 			{
-				if (confirmed)
-				{
-					LoadMenu();
-				}
-			});
-			AudioController.PlaySound(AudioController.AudioClips.buttonSound);
-		}
-
-		private void LoadMenu()
-		{
-			// Show fullscreen black overlay
-			Overlay.Show(0.3f, () =>
-			{
-				LivesSystem.UnlockLife(true);
-
-				// Save the current state of the game
-				SaveController.Save(true);
-
-				// Unload the current level and all the dependencies
 				GameController.LoadMenu();
+			},
+			(isreplay) =>
+			{
+				if (isreplay)
+				{
+					GameController.Replay();
+				}
 			});
 		}
 		#endregion

@@ -272,7 +272,7 @@ namespace Watermelon
 						if (instance.activateSound != null)
 							AudioController.PlaySound(settings.CustomAudioClip.Handle(instance.activateSound));
 
-						settings.Save.Amount--;
+						if (!settings.IsFree) settings.Save.Amount--;
 
 						SaveController.MarkAsSaveIsRequired();
 
@@ -291,7 +291,7 @@ namespace Watermelon
 							if (instance.activateSound != null)
 								AudioController.PlaySound(settings.CustomAudioClip.Handle(instance.activateSound));
 
-							settings.Save.Amount--;
+							if (!settings.IsFree) settings.Save.Amount--;
 
 							SaveController.MarkAsSaveIsRequired();
 

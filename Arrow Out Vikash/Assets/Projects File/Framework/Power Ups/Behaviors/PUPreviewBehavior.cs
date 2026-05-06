@@ -43,7 +43,6 @@ namespace Watermelon
 
 		private void OnPreviewClicked()
 		{
-
 			// Hide all existing previews if disabled
 			var allArrows = GridManager.Instance.GetAllArrows();
 			foreach (var arrow in allArrows)

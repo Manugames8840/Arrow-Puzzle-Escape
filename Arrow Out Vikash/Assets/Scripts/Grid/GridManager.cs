@@ -59,6 +59,10 @@ namespace ArrowOut
 
 		[SerializeField] private TransformWaveAnimation _transformWaveAnimation;
 
+		[Header("Intro Animation")]
+		[Tooltip("Delay in seconds between each segment reveal during arrow intro animation")]
+		[SerializeField] private float introAnimSpeed = 0.04f;
+
 		[Header("Level")]
 		private LevelData CurrentLevel;
 
@@ -137,13 +141,7 @@ namespace ArrowOut
 			GenerateBlockers();
 			GenerateHoles();
 			GeneratePortals();
-			GenerateArrows();
-
-			totalArrows = CurrentLevel.arrowPaths.Count;
-			completedArrows = 0;
-			timer = CurrentLevel.Duration;
-
-			_levelRepresentation.SetTotalArrow(arrows.Count);
+			StartCoroutine(GenerateArrowsWithIntro());
 		}
 
 		void ClearGrid()
@@ -239,6 +237,46 @@ namespace ArrowOut
 			}
 
 			LevelController.LevelRepresentation.Arrows = arrows;
+		}
+
+		/// <summary>
+		/// Creates all arrows first, then plays their intro animations simultaneously.
+		/// All arrows grow from tail to head at the same time for a visually attractive level start.
+		/// </summary>
+		IEnumerator GenerateArrowsWithIntro()
+		{
+			List<Arrow> createdArrows = new List<Arrow>();
+
+			foreach (var arrowPath in CurrentLevel.arrowPaths)
+			{
+				if (arrowPath.body == null || arrowPath.body.Count < 2)
+					continue;
+
+				Arrow arrow = CreateArrow(arrowPath);
+				if (arrow != null)
+					createdArrows.Add(arrow);
+			}
+
+			LevelController.LevelRepresentation.Arrows = arrows;
+			_levelRepresentation.SetTotalArrow(arrows.Count);
+
+			// Start all intro animations simultaneously
+			List<Coroutine> introCoroutines = new List<Coroutine>();
+			foreach (var arrow in createdArrows)
+			{
+				if (arrow != null)
+				{
+					arrow.SetIntroAnimSpeed(introAnimSpeed);
+					introCoroutines.Add(arrow.PlayIntroAnimation());
+				}
+			}
+
+			// Wait for all intro animations to complete
+			foreach (var coroutine in introCoroutines)
+			{
+				if (coroutine != null)
+					yield return coroutine;
+			}
 		}
 
 		void GenerateGridDots()
@@ -337,7 +375,7 @@ namespace ArrowOut
 			DisableGridDot(to);
 		}
 
-		private void CreateArrow(ArrowPath arrowPath)
+		private Arrow CreateArrow(ArrowPath arrowPath)
 		{
 			GameObject arrowContainer = new GameObject($"Arrow_{arrowPath.body[0]}");
 			arrowContainer.transform.SetParent(gridRoot);
@@ -367,6 +405,8 @@ namespace ArrowOut
 				cubeRowManager = FindAnyObjectByType<CubeRowManager>();
 			}
 			cubeRowManager?.GenerateCubesForArrow(arrowPath);
+
+			return arrow;
 		}
 
 		public void RegisterArrow(Vector2Int tailPosition, Arrow arrow)
@@ -406,6 +446,17 @@ namespace ArrowOut
 			var item = arrows.First(kvp => kvp.Value == arrow);
 			arrows.Remove(item.Key);
 			OnArrowCompleted();
+		}
+
+		public void SetAllArrowsTheme(ArrowColorMode mode)
+		{
+			foreach (var arrow in arrows.Values)
+			{
+				if (arrow != null)
+				{
+					arrow.SetTheme(mode);
+				}
+			}
 		}
 
 		public List<Arrow> GetAllArrows()

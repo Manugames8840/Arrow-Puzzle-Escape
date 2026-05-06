@@ -191,7 +191,7 @@ namespace Watermelon
         {
             if (isLocked) return;
 
-            if (settings.Save.Amount > 0)
+            if (settings.Save.Amount > 0 || settings.IsFree)
             {
                 if (!behavior.IsBusy)
                 {
@@ -243,6 +243,8 @@ namespace Watermelon
                 amountPurchaseObject.SetActive(false);
 
                 amountText.text = amount.ToString();
+
+				amountContainerObject.gameObject.SetActive(!settings.IsFree);
             }
             else
             {

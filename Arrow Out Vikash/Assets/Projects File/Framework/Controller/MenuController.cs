@@ -58,8 +58,6 @@ namespace Watermelon
 		{
 			if (LivesSystem.Lives > 0 || LivesSystem.InfiniteMode)
 			{
-				LivesSystem.LockLife();
-
 				LoadGame(levelID);
 			}
 			else
@@ -68,8 +66,6 @@ namespace Watermelon
 				{
 					if (lifeRecieved)
 					{
-						LivesSystem.LockLife();
-
 						LoadGame(levelID);
 					}
 				});

@@ -48,7 +48,7 @@ namespace BlockGame
 		public virtual void OpenSkin()
 		{
 			Debug.Log("skin opened");
-			ToastMessage.Instance.Show("COMMING SOON");
+			ToastMessage.Instance.Show("COMING SOON");
 			if (IsPlayGlobalButtonSound) AudioController.PlaySound(AudioController.AudioClips.buttonSound);
 		}
 	}

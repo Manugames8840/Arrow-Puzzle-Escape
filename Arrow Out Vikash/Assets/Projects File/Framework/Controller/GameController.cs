@@ -31,6 +31,7 @@ namespace Framework
 
 		public static event SimpleCallback OnGameStartd;
 		public static bool IsGameActivated => isGameActivated;
+		public static int _levelCompleteCount { get; private set; }
 
 		public LoadingScreenUI LoadingScreenUI;
 		public GameConditionType GameConstrain = GameConditionType.Star;
@@ -140,6 +141,8 @@ namespace Framework
 
 			isGameFinished = true;
 
+			_levelCompleteCount++;
+
 			levelController.HandleGameEnd();
 			levelController.OnGameCompleted();
 
@@ -154,6 +157,8 @@ namespace Framework
 			CollectNewFeatures();
 
 			UIController.ShowPage<UIComplete>();
+
+			MyEventArgs.GameControllerEvents.OnLevelWin?.Dispatch();
 		}
 
 		private static void CollectNewFeatures()
@@ -182,6 +187,7 @@ namespace Framework
 				allowRevive = false;
 
 			isGameFinished = true;
+			_levelCompleteCount = 0;
 
 			levelController.OnLevelFailed();
 			levelController.HandleGameEnd();
@@ -354,8 +360,9 @@ namespace Framework
 
 			if (Monetization.IsActive && Monetization.Settings.IsShowOnLevelComplete)
 			{
-				if (Monetization.Settings.LevelRequire < ActiveSession.Current.DisplayLevelIndex)
+				if (Monetization.Settings.LevelRequire < ActiveSession.Current.DisplayLevelIndex && _levelCompleteCount % 2 == 0)
 				{
+					_levelCompleteCount = 0;
 					AdsManager.ShowInterstitial((result) =>
 					{
 						onUnloaded?.Invoke();
@@ -422,9 +429,8 @@ namespace Framework
 			{
 				Unload(() =>
 				{
+					DG.Tweening.DOTween.KillAll();
 					TransitionManager.Instance.LoadLevel(GameConsts.SCENE_MENU);
-
-					//SceneLoader.LoadAsync(GameConsts.SCENE_MENU, LOADINGSCREENUI, LOADINGSCREENUI._loadingScreenConfig);
 				});
 			}, true);
 		}
@@ -435,9 +441,8 @@ namespace Framework
 			{
 				Unload(() =>
 				{
+					DG.Tweening.DOTween.KillAll();
 					TransitionManager.Instance.LoadLevel(GameConsts.SCENE_GAME);
-
-					//SceneLoader.LoadAsync(GameConsts.SCENE_GAME, LOADINGSCREENUI, LOADINGSCREENUI._loadingScreenConfig);
 				});
 			}, true);
 		}
@@ -449,11 +454,26 @@ namespace Framework
 			{
 				Unload(() =>
 				{
+					DG.Tweening.DOTween.KillAll();
 					TransitionManager.Instance.LoadLevel(GameConsts.SCENE_MENU);
-
-					//SceneLoader.LoadAsync(GameConsts.SCENE_MENU, LOADINGSCREENUI, LOADINGSCREENUI._loadingScreenConfig);
 				});
 			}, true);
+		}
+
+		public static void LoadMenu()
+		{
+			// Show fullscreen black overlay
+			Overlay.Show(0.3f, () =>
+			{
+				//Cut one Life
+				LivesSystem.UnlockLife(true);
+
+				// Save the current state of the game
+				SaveController.Save(true);
+
+				// Unload the current level and all the dependencies
+				LoadMainScene();
+			});
 		}
 	}
 }

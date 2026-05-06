@@ -55,25 +55,25 @@ namespace Watermelon
 		}
 		private void OnPlayButtonClicked()
 		{
-			AudioController.PlaySound(AudioController.AudioClips.buttonSound);
+			//AudioController.PlaySound(AudioController.AudioClips.buttonSound);
 
-			GameData gameData = GameData.Data;
-			LevelDatabase levelDatabase = gameData.LevelDatabase;
-			ActiveSession session = ActiveSession.Current;
-			int currentIndex = session.Save.DisplayLevelIndex;
+			//GameData gameData = GameData.Data;
+			//LevelDatabase levelDatabase = gameData.LevelDatabase;
+			//ActiveSession session = ActiveSession.Current;
+			//int currentIndex = session.Save.DisplayLevelIndex;
 
-			var variations = levelDatabase.GetLevelVariations(currentIndex);
+			//var variations = levelDatabase.GetLevelVariations(currentIndex);
 
-			// Always show popup if variations exist > 1 OR if it's purely a paid level.
-			if (variations != null && variations.Count > 1 && LevelVariationPopup.Instance != null)
-			{
-				LevelVariationPopup.Instance.ShowVariations(currentIndex, variations);
-			}
-			else if (variations != null && variations.Count == 1 && variations[0].isPaid && LevelVariationPopup.Instance != null)
-			{
-				LevelVariationPopup.Instance.ShowVariations(currentIndex, variations);
-			}
-			else
+			//// Always show popup if variations exist > 1 OR if it's purely a paid level.
+			//if (variations != null && variations.Count > 1 && LevelVariationPopup.Instance != null)
+			//{
+			//	LevelVariationPopup.Instance.ShowVariations(currentIndex, variations);
+			//}
+			//else if (variations != null && variations.Count == 1 && variations[0].isPaid && LevelVariationPopup.Instance != null)
+			//{
+			//	LevelVariationPopup.Instance.ShowVariations(currentIndex, variations);
+			//}
+			//else
 			{
 				// Default skip popup if free and only 1 variation
 				DOTween.KillAll();

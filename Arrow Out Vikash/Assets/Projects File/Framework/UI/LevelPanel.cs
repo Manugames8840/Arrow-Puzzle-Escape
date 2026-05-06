@@ -10,6 +10,7 @@ namespace Watermelon
 	public class LevelPanel : MonoBehaviour
 	{
 		[SerializeField] TextMeshProUGUI levelText;
+		[SerializeField] TextMeshProUGUI levelStatusText;
 		[SerializeField] Image leftSideIcon;
 		[SerializeField] Image rightSideIcon;
 		[SerializeField] TextAnim textAnimation;
@@ -25,6 +26,10 @@ namespace Watermelon
 
 			levelText.text = string.Format("LEVEL \n {0}", levelIndex + 1);
 			levelText.color = mapLevelData.TextColor;
+			if (levelStatusText != null)
+			{
+				levelStatusText.text = levelData.Type.ToText();
+			}
 
 			Sprite customIcon = mapLevelData.Icon;
 			if (customIcon != null)

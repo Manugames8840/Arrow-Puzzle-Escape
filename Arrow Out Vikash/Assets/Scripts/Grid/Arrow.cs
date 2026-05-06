@@ -8,6 +8,13 @@ using Watermelon;
 
 namespace ArrowOut
 {
+	public enum ArrowColorMode
+	{
+		White,
+		Black,
+		Colors
+	}
+
 	public class Arrow : MonoBehaviour, IArrowInputHandler
 	{
 		// Dependencies (injected)
@@ -23,11 +30,14 @@ namespace ArrowOut
 		private bool isValidMove;
 		private List<Vector2Int> previewPath;
 		private List<Vector2Int> originalBodyPositions;
+		private bool isIntroPlaying;
 
 		// Configuration
-		private Color normalColor = Color.white;
+		private Color originalColor = Color.white;
+		private Color currentThemeColor = Color.white;
 		private Color invalidColor = Color.red;
-		private float extendSpeed = 0.03f;
+		private float extendSpeed = 0.01f;
+		private float introSegmentDelay = 0.1f;
 		private int initialLength;
 
 		// Public properties
@@ -45,10 +55,12 @@ namespace ArrowOut
 			arrowRenderer = renderer;
 			movementValidator = validator;
 			coordinateConverter = converter;
-			normalColor = color;
+			originalColor = color;
+			currentThemeColor = color;
 			initialLength = body.Count;
 
 			UpdateHeadRotation();
+			SetTheme((ArrowColorMode)PlayerPrefs.GetInt("CurrentTheme", 1));
 			GridManager.Instance.RegisterArrow(tailPosition, this);
 		}
 
@@ -102,20 +114,17 @@ namespace ArrowOut
 
 		public void MouseDown()
 		{
-			if (isExtending) return;
+			if (isExtending || isIntroPlaying) return;
 
-#if MODULE_HAPTIC
-			Haptic.Play(Haptic.HAPTIC_HARD);
-#endif
 
 			// Check if arrow can move
 			isValidMove = movementValidator.CanMove(body);
 
-			if (!isValidMove)
-			{
-				// Invalid - show red color
-				SetColor(invalidColor);
-			}
+			//if (!isValidMove)
+			//{
+			//	// Invalid - show red color
+			//	SetColor(invalidColor);
+			//}
 			LevelController.OnObjectPicked(this);
 		}
 
@@ -129,17 +138,24 @@ namespace ArrowOut
 		{
 			Debug.Log($"MouseUp - isExtending: {isExtending}, isValidMove: {isValidMove}, gameObject: {gameObject != null}");
 
-			if (isExtending || this == null || gameObject == null)
+			if (isExtending || isIntroPlaying || this == null || gameObject == null)
 				return;
+
+#if MODULE_HAPTIC
+			Haptic.Play(Haptic.HAPTIC_HARD);
+#endif
 
 			HidePreview();
 
 			if (!isValidMove)
 			{
 				Debug.Log("Invalid move - bouncing back");
-				SetColor(normalColor);
+				arrowRenderer.OnClickBlocked();
+				SetColor(invalidColor);
 				AudioController.PlaySound(AudioController.AudioClips.actionError);
 				StartCoroutine(ExtendAndBounceArrow());
+				LevelController.OnArrowRemoved();
+				isExtending = false;
 			}
 			else
 			{
@@ -405,6 +421,87 @@ namespace ArrowOut
 			}
 
 			UpdateHeadRotation();
+		}
+
+		// ============= INTRO ANIMATION =============
+
+		/// <summary>
+		/// Sets the delay between each segment reveal during the intro animation.
+		/// </summary>
+		public void SetIntroAnimSpeed(float speed)
+		{
+			introSegmentDelay = speed;
+		}
+
+		/// <summary>
+		/// Plays an intro animation that grows the arrow from tail to head.
+		/// All segments start hidden, then reveal one by one from tail toward head.
+		/// </summary>
+		public Coroutine PlayIntroAnimation()
+		{
+			return StartCoroutine(IntroAnimationCoroutine());
+		}
+
+		public void SetTheme(ArrowColorMode mode)
+		{
+			switch (mode)
+			{
+				case ArrowColorMode.White:
+					currentThemeColor = Color.white;
+					break;
+				case ArrowColorMode.Black:
+					currentThemeColor = Color.black;
+					break;
+				case ArrowColorMode.Colors:
+					currentThemeColor = originalColor;
+					break;
+			}
+
+			SetColor(currentThemeColor);
+		}
+
+		private IEnumerator IntroAnimationCoroutine()
+		{
+			isIntroPlaying = true;
+
+			// Hide the arrow head initially
+			if (arrowHead != null && arrowHead.GetGameObject() != null)
+				arrowHead.GetGameObject().SetActive(false);
+
+			// Progressively reveal from tail (last index) to head (index 0)
+			// Build the path segment by segment: start with just the tail, add one segment at a time
+			for (int revealCount = 1; revealCount <= body.Count; revealCount++)
+			{
+				// Show the last 'revealCount' segments (from tail side)
+				int startIndex = body.Count - revealCount;
+				List<Vector2Int> partialPath = body.GetRange(startIndex, revealCount);
+
+				// Need at least 2 points for the renderer to draw
+				if (partialPath.Count >= 2)
+				{
+					arrowRenderer?.UpdatePath(partialPath);
+				}
+				else if (partialPath.Count == 1)
+				{
+					// For a single point, create a tiny path so something is visible
+					List<Vector2Int> tinyPath = new List<Vector2Int> { partialPath[0], partialPath[0] };
+					arrowRenderer?.UpdatePath(tinyPath);
+				}
+
+				yield return new WaitForSeconds(introSegmentDelay);
+			}
+
+			// Final: show the complete arrow with the head
+			arrowRenderer?.UpdatePath(body);
+
+			if (arrowHead != null && arrowHead.GetGameObject() != null)
+			{
+				arrowHead.GetGameObject().SetActive(true);
+				arrowHead.UpdatePosition(body[0]);
+			}
+
+			UpdateHeadRotation();
+			isIntroPlaying = false;
 		}
 
 		// ============= VISUAL FEEDBACK =============

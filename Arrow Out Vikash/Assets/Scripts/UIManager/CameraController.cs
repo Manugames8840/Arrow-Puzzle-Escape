@@ -1,6 +1,8 @@
-using System;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.InputSystem;         // <-- New Input System
 using UnityEngine.InputSystem.EnhancedTouch; // <-- Touch support
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
@@ -17,6 +19,12 @@ namespace ArrowOut
 		public float zoomSmoothTime = 0.1f;
 		public float minZoomMultiplier = 0.3f;
 
+		[Header("Intro Auto Zoom")]
+		public bool enableIntroZoom = true;
+		public float introZoomDelay = 1.5f;
+		[Range(0f, 1f), Tooltip("0 is fully zoomed out (0%), 1 is fully zoomed in (100%)")]
+		public float introZoomTargetFill = 0.5f;
+
 		[Header("Pan")]
 		public float panSpeed = 0.5f;
 		public float panSmoothTime = 0.1f;
@@ -31,6 +39,10 @@ namespace ArrowOut
 		public float uiZoomStep = 1f;
 		[Tooltip("How fast zoom changes while button is held")]
 		public float uiZoomHoldSpeed = 3f;
+
+		[Header("UI Zoom Progress")]
+		public Image zoomProgressFillImage;
+		public TextMeshProUGUI zoomProgressText;
 
 		// ================= RUNTIME =================
 		Camera cam;
@@ -55,12 +67,13 @@ namespace ArrowOut
 		void OnEnable()
 		{
 			EnhancedTouchSupport.Enable();
-			MyEventArgs.GameControllerEvents.OnLevelComplete.AddListener(ResetCamera);
+			MyEventArgs.GameControllerEvents.OnLevelWin.AddListener(OnLevelWin);
 		}
 
-		private void ResetCamera(int arg1, int arg2)
+		private void OnLevelWin()
 		{
 			ResetCamera();
+			gameObject.SetActive(false);
 		}
 
 		void OnDisable()
@@ -98,15 +111,59 @@ namespace ArrowOut
 			}
 		}
 
+		private Coroutine introZoomCoroutine;
+
 		void Setup()
 		{
 			if (GridManager.Instance == null) return;
 
 			gridBounds = GridManager.Instance.GetGridWorldBounds();
 			initialOrthoSize = GridManager.Instance.GetInitialOrthoSize();
-			targetOrthoSize = cam.orthographicSize;
+
+			// Instantly show the full grid
+			cam.orthographicSize = initialOrthoSize;
+			targetOrthoSize = initialOrthoSize;
+
 			targetPosition = cam.transform.position;
 			is3D = GridManager.Instance.renderMode == GameRenderMode.Mesh3D;
+
+			if (enableIntroZoom)
+			{
+				if (introZoomCoroutine != null) StopCoroutine(introZoomCoroutine);
+				introZoomCoroutine = StartCoroutine(IntroZoomSequence());
+			}
+		}
+
+		IEnumerator IntroZoomSequence()
+		{
+			yield return new WaitForSeconds(introZoomDelay);
+
+			float minOrtho = initialOrthoSize * minZoomMultiplier;
+			float maxOrtho = initialOrthoSize;
+
+			float desiredSize = Mathf.Lerp(maxOrtho, minOrtho, introZoomTargetFill);
+
+			float duration = 1.5f; // 👈 adjust for speed (higher = slower)
+			float time = 0f;
+
+			float startSize = cam.orthographicSize;
+
+			while (time < duration)
+			{
+				time += Time.deltaTime;
+
+				float t = time / duration;
+
+				// Smooth easing (important 👇)
+				t = Mathf.SmoothStep(0f, 1f, t);
+
+				cam.orthographicSize = Mathf.Lerp(startSize, desiredSize, t);
+
+				yield return null;
+			}
+
+			cam.orthographicSize = desiredSize;
+			targetOrthoSize = desiredSize;
 		}
 
 		// ================= UPDATE =================
@@ -117,6 +174,7 @@ namespace ArrowOut
 			HandleZoom();
 			HandlePan();
 			ClampCamera();
+			UpdateZoomProgressUI();
 		}
 
 		// ================= ZOOM =================
@@ -268,6 +326,33 @@ namespace ArrowOut
 			targetPosition = pos;
 		}
 
+		// ================= PROGRESS UI =================
+		void UpdateZoomProgressUI()
+		{
+			if (zoomProgressFillImage == null && zoomProgressText == null) return;
+
+			// calculate the active range for Zoom (initial is largest size, minZoomMultiplier is smallest size)
+			float minOrtho = initialOrthoSize * minZoomMultiplier;
+			float maxOrtho = initialOrthoSize;
+			float range = maxOrtho - minOrtho;
+
+			if (range <= 0) return;
+
+			// Reverse so that most zoomed in (current size == minOrtho) is 100%, and most zoomed out is 0%
+			float zoomPercentage = (maxOrtho - cam.orthographicSize) / range;
+			zoomPercentage = Mathf.Clamp01(zoomPercentage); // Ensure it's exactly between 0 and 1
+
+			if (zoomProgressFillImage != null)
+			{
+				zoomProgressFillImage.fillAmount = zoomPercentage;
+			}
+
+			if (zoomProgressText != null)
+			{
+				zoomProgressText.text = $"{(zoomPercentage * 100f):F0}%";
+			}
+		}
+
 		// ================= HELPERS =================
 		Vector3 GetMouseWorldPos(Mouse mouse)
 		{
@@ -299,7 +384,14 @@ namespace ArrowOut
 					(gridBounds.min.y + gridBounds.max.y) * 0.5f,
 					cam.transform.position.z);
 
+			cam.orthographicSize = 5;
+
 			targetPosition = center;
+		}
+
+		public void OnDestroy()
+		{
+			MyEventArgs.GameControllerEvents.OnLevelWin.RemoveListener(OnLevelWin);
 		}
 	}
 }

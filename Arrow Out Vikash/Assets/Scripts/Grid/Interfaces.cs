@@ -13,6 +13,7 @@ namespace ArrowOut
 		void UpdatePath(List<Vector2Int> path);
 		void SetColor(Color color);
 		void ShowHint();
+		void OnClickBlocked();
 		void ShowPreview(List<Vector2Int> previewPath);
 		void HidePreview();
 		void Destroy();

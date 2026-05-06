@@ -27,7 +27,6 @@ namespace Framework
 		public void SetConstrain(GameConditionType gameConditionType)
 		{
 			Condition = gameConditionType;
-			Init();
 		}
 
 		public void Init()

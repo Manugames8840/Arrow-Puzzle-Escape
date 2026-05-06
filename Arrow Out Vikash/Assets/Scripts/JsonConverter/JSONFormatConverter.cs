@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
 using System.IO;
@@ -369,39 +369,56 @@ public class JSONFormatConverter : EditorWindow
 
 		// Convert arrows
 		newLevel.arrowPaths = new List<ArrowPath>();
-		foreach (OldArrowData oldArrow in oldLevel.arrows)
+		if (oldLevel.arrows != null)
 		{
-			ArrowPath newArrow = new ArrowPath();
-			newArrow.body = new List<Vector2Int>();
-			oldArrow.nodes.Reverse();
-
-			foreach (Vector2Data node in oldArrow.nodes)
+			foreach (OldArrowData oldArrow in oldLevel.arrows)
 			{
-				newArrow.body.Add(new Vector2Int(node.x, node.y));
+				ArrowPath newArrow = new ArrowPath();
+				newArrow.body = new List<Vector2Int>();
+				
+				if (oldArrow.nodes != null)
+				{
+					foreach (Vector2Data node in oldArrow.nodes)
+					{
+						newArrow.body.Add(new Vector2Int(node.x, node.y));
+					}
+					// Reverse nodes at conversion time to permanently correct head/tail positions
+					newArrow.body.Reverse();
+				}
+				newArrow.color = ArrowColorPalette.GetColor(oldArrow.color);
+				newArrow.colorId = oldArrow.color;
+				newLevel.arrowPaths.Add(newArrow);
 			}
-			newArrow.color = ArrowColorPalette.GetColor(oldArrow.color);
-			newLevel.arrowPaths.Add(newArrow);
 		}
 
 		// Convert blockers (wayBlockers → blockers)
 		newLevel.blockers = new List<Vector2Int>();
-		foreach (Vector2Data blocker in oldLevel.wayBlockers)
+		if (oldLevel.wayBlockers != null)
 		{
-			newLevel.blockers.Add(new Vector2Int(blocker.x, blocker.y));
+			foreach (Vector2Data blocker in oldLevel.wayBlockers)
+			{
+				newLevel.blockers.Add(new Vector2Int(blocker.x, blocker.y));
+			}
 		}
 
 		// Convert holes (blackHoles → holes)
 		newLevel.holes = new List<Vector2Int>();
-		foreach (Vector2Data hole in oldLevel.blackHoles)
+		if (oldLevel.blackHoles != null)
 		{
-			newLevel.holes.Add(new Vector2Int(hole.x, hole.y));
+			foreach (Vector2Data hole in oldLevel.blackHoles)
+			{
+				newLevel.holes.Add(new Vector2Int(hole.x, hole.y));
+			}
 		}
 
 		// Convert portals
 		newLevel.portals = new List<Vector2Int>();
-		foreach (Vector2Data portal in oldLevel.portals)
+		if (oldLevel.portals != null)
 		{
-			newLevel.portals.Add(new Vector2Int(portal.x, portal.y));
+			foreach (Vector2Data portal in oldLevel.portals)
+			{
+				newLevel.portals.Add(new Vector2Int(portal.x, portal.y));
+			}
 		}
 
 		return newLevel;

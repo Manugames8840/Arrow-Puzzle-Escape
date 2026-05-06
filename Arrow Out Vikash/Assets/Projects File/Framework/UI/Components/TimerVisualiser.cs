@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Framework;
 using Framework.Core;
+using Base.UI.Manager;
 
 namespace Watermelon
 {
 	public class TimerVisualiser : MonoBehaviour
 	{
-		[SerializeField] Button ReplyButton;
-
 		[SerializeField] TMP_Text timerText;
 		private GameplayTimer timer;
 
@@ -19,12 +18,6 @@ namespace Watermelon
 
 		public void Init()
 		{
-			if (ReplyButton != null)
-			{
-				ReplyButton.onClick.AddListener(OnReplayButtonClick);
-				ReplyButton.interactable = false;
-			}
-
 			if (LevelController.GameplayTimer != null)
 			{
 				LevelController.GameplayTimer.OnTimerStart += OnTimerStart;
@@ -44,45 +37,6 @@ namespace Watermelon
 		{
 			if (LevelController.GameplayTimer != null) LevelController.GameplayTimer.OnTimerStart -= OnTimerStart;
 			if (LevelController.GameplayMove != null) LevelController.GameplayMove.OnTimerStart -= OnTimerStart;
-
-			if (ReplyButton == null)
-				return;
-
-			if (!ReplyButton.interactable) ReplyButton.interactable = true;
-		}
-
-		private void OnReplayButtonClick()
-		{
-			LevelController.GameplayTimer?.Pause();
-			LivesSystem.LockLife();
-			UILevelQuitPopUpGameOver.Show((confirmed) =>
-			{
-				if (confirmed)
-				{
-					LoadMenu();
-				}
-				else
-				{
-					LevelController.GameplayTimer?.Resume();
-				}
-			});
-
-			AudioController.PlaySound(AudioController.AudioClips.buttonSound);
-		}
-
-		private void LoadMenu()
-		{
-			// Show fullscreen black overlay
-			Overlay.Show(0.3f, () =>
-			{
-				LivesSystem.UnlockLife(true);
-
-				// Save the current state of the game
-				SaveController.Save(true);
-
-				// Unload the current level and all the dependencies
-				GameController.LoadGameGameScene();
-			});
 		}
 
 		public void Show(GameplayTimer timer)
@@ -112,12 +66,12 @@ namespace Watermelon
 
 		public void SetFreezeFillAmount(float t)
 		{
-			fillImage.fillAmount = t;
+			if (fillImage != null) fillImage.fillAmount = t;
 		}
 
 		public void OnTimeChanged(TimeSpan timeSpan)
 		{
-			timerText.text = string.Format("{0:mm\\:ss}", timeSpan);
+			if (timerText != null) timerText.text = string.Format("{0:mm\\:ss}", timeSpan);
 		}
 	}
 }

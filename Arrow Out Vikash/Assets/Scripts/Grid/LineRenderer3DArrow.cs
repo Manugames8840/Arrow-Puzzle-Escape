@@ -1,3 +1,4 @@
+using Framework.Core;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace ArrowOut
 		private ICoordinateConverter coordinateConverter;
 		private Color currentColor;
 		private IArrowInputHandler parentArrow;
+		private TweenCase shakeTweenCase;
 
 		public void Initialize(Transform parent, List<Vector2Int> path, Color color)
 		{
@@ -76,6 +78,13 @@ namespace ArrowOut
 		void OnMouseUp()
 		{
 			parentArrow?.MouseUp();
+		}
+
+		public void OnClickBlocked()
+		{
+			CameraShake.Shake(0.3f, 0.2f);
+			shakeTweenCase.KillActive();
+			shakeTweenCase = transform.DOShake(0.05f, 0.15f);
 		}
 
 		public void ShowPreview(List<Vector2Int> previewPath)
