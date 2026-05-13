@@ -455,6 +455,319 @@ public class LevelEditor : EditorWindow
 		currentCellSize = Mathf.Min(currentCellSize, BASE_CELL_SIZE); // Cap at base size
 	}
 
+	void AutoFitGrid()
+	{
+		int minX = int.MaxValue;
+		int minY = int.MaxValue;
+		int maxX = int.MinValue;
+		int maxY = int.MinValue;
+
+		bool hasElements = false;
+
+		// Arrows
+		foreach (var arrow in arrows.Values)
+		{
+			foreach (var pt in arrow.body)
+			{
+				if (pt.x < minX) minX = pt.x;
+				if (pt.x > maxX) maxX = pt.x;
+				if (pt.y < minY) minY = pt.y;
+				if (pt.y > maxY) maxY = pt.y;
+				hasElements = true;
+			}
+		}
+
+		// Blockers
+		foreach (var pt in blockers)
+		{
+			if (pt.x < minX) minX = pt.x;
+			if (pt.x > maxX) maxX = pt.x;
+			if (pt.y < minY) minY = pt.y;
+			if (pt.y > maxY) maxY = pt.y;
+			hasElements = true;
+		}
+
+		// Holes
+		foreach (var pt in holes)
+		{
+			if (pt.x < minX) minX = pt.x;
+			if (pt.x > maxX) maxX = pt.x;
+			if (pt.y < minY) minY = pt.y;
+			if (pt.y > maxY) maxY = pt.y;
+			hasElements = true;
+		}
+
+		// Portals
+		foreach (var pt in portals)
+		{
+			if (pt.x < minX) minX = pt.x;
+			if (pt.x > maxX) maxX = pt.x;
+			if (pt.y < minY) minY = pt.y;
+			if (pt.y > maxY) maxY = pt.y;
+			hasElements = true;
+		}
+
+		if (!hasElements) return;
+
+		int shiftX = -minX;
+		int shiftY = -minY;
+
+		// Update grid dimensions
+		width = maxX - minX + 1;
+		height = maxY - minY + 1;
+
+		// Shift arrows
+		Dictionary<Vector2Int, ArrowPath> newArrows = new();
+		foreach (var kvp in arrows)
+		{
+			ArrowPath arrow = kvp.Value;
+			for (int i = 0; i < arrow.body.Count; i++)
+			{
+				arrow.body[i] = new Vector2Int(arrow.body[i].x + shiftX, arrow.body[i].y + shiftY);
+			}
+			Vector2Int newTail = arrow.body[^1];
+			newArrows[newTail] = arrow;
+		}
+		arrows = newArrows;
+
+		// Shift blockers
+		HashSet<Vector2Int> newBlockers = new();
+		foreach (var b in blockers) newBlockers.Add(new Vector2Int(b.x + shiftX, b.y + shiftY));
+		blockers = newBlockers;
+
+		// Shift holes
+		HashSet<Vector2Int> newHoles = new();
+		foreach (var h in holes) newHoles.Add(new Vector2Int(h.x + shiftX, h.y + shiftY));
+		holes = newHoles;
+
+		// Shift portals
+		HashSet<Vector2Int> newPortals = new();
+		foreach (var p in portals) newPortals.Add(new Vector2Int(p.x + shiftX, p.y + shiftY));
+		portals = newPortals;
+
+		if (selectedArrow != null)
+		{
+			selectedArrowTail = new Vector2Int(selectedArrowTail.x + shiftX, selectedArrowTail.y + shiftY);
+		}
+
+		CalculateCellSize();
+		SaveCurrentLevel();
+		Repaint();
+	}
+
+	void AutoFitAllLevels()
+	{
+		if (database == null || database.levels == null) return;
+
+		int fitCount = 0;
+
+		foreach (var level in database.levels)
+		{
+			if (level == null) continue;
+
+			int minX = int.MaxValue;
+			int minY = int.MaxValue;
+			int maxX = int.MinValue;
+			int maxY = int.MinValue;
+
+			bool hasElements = false;
+
+			// Arrows
+			if (level.arrowPaths != null)
+			{
+				foreach (var arrow in level.arrowPaths)
+				{
+					if (arrow.body == null) continue;
+					foreach (var pt in arrow.body)
+					{
+						if (pt.x < minX) minX = pt.x;
+						if (pt.x > maxX) maxX = pt.x;
+						if (pt.y < minY) minY = pt.y;
+						if (pt.y > maxY) maxY = pt.y;
+						hasElements = true;
+					}
+				}
+			}
+
+			// Blockers
+			if (level.blockers != null)
+			{
+				foreach (var pt in level.blockers)
+				{
+					if (pt.x < minX) minX = pt.x;
+					if (pt.x > maxX) maxX = pt.x;
+					if (pt.y < minY) minY = pt.y;
+					if (pt.y > maxY) maxY = pt.y;
+					hasElements = true;
+				}
+			}
+
+			// Holes
+			if (level.holes != null)
+			{
+				foreach (var pt in level.holes)
+				{
+					if (pt.x < minX) minX = pt.x;
+					if (pt.x > maxX) maxX = pt.x;
+					if (pt.y < minY) minY = pt.y;
+					if (pt.y > maxY) maxY = pt.y;
+					hasElements = true;
+				}
+			}
+
+			// Portals
+			if (level.portals != null)
+			{
+				foreach (var pt in level.portals)
+				{
+					if (pt.x < minX) minX = pt.x;
+					if (pt.x > maxX) maxX = pt.x;
+					if (pt.y < minY) minY = pt.y;
+					if (pt.y > maxY) maxY = pt.y;
+					hasElements = true;
+				}
+			}
+
+			if (!hasElements) continue;
+
+			int shiftX = -minX;
+			int shiftY = -minY;
+
+			// Update level dimensions
+			level.width = maxX - minX + 1;
+			level.height = maxY - minY + 1;
+
+			// Shift elements
+			if (level.arrowPaths != null)
+			{
+				foreach (var arrow in level.arrowPaths)
+				{
+					if (arrow.body == null) continue;
+					for (int i = 0; i < arrow.body.Count; i++)
+					{
+						arrow.body[i] = new Vector2Int(arrow.body[i].x + shiftX, arrow.body[i].y + shiftY);
+					}
+				}
+			}
+
+			if (level.blockers != null)
+			{
+				for (int i = 0; i < level.blockers.Count; i++)
+					level.blockers[i] = new Vector2Int(level.blockers[i].x + shiftX, level.blockers[i].y + shiftY);
+			}
+
+			if (level.holes != null)
+			{
+				for (int i = 0; i < level.holes.Count; i++)
+					level.holes[i] = new Vector2Int(level.holes[i].x + shiftX, level.holes[i].y + shiftY);
+			}
+
+			if (level.portals != null)
+			{
+				for (int i = 0; i < level.portals.Count; i++)
+					level.portals[i] = new Vector2Int(level.portals[i].x + shiftX, level.portals[i].y + shiftY);
+			}
+
+			EditorUtility.SetDirty(level);
+			fitCount++;
+		}
+
+		AssetDatabase.SaveAssets();
+
+		// Refresh current level if one is selected
+		if (selectedLevel != null)
+		{
+			LoadLevelData(selectedLevel);
+		}
+
+		Debug.Log($"[LevelEditor] Auto-fitted {fitCount} levels.");
+		Repaint();
+	}
+
+	// ================= VERIFICATION =================
+	bool IsLevelCompletable(LevelData level)
+	{
+		if (level == null || level.arrowPaths == null || level.arrowPaths.Count == 0)
+			return true;
+
+		// Create a snapshot of the current arrows
+		// If we are checking the *currently edited* level (selectedLevel),
+		// we should use the unsaved state (arrows dict) instead of level.arrowPaths
+		List<ArrowPath> remaining = new List<ArrowPath>();
+		if (level == selectedLevel)
+		{
+			remaining.AddRange(arrows.Values);
+		}
+		else
+		{
+			remaining.AddRange(level.arrowPaths);
+		}
+
+		bool progress = true;
+
+		while (progress && remaining.Count > 0)
+		{
+			progress = false;
+
+			for (int i = 0; i < remaining.Count; i++)
+			{
+				ArrowPath arrow = remaining[i];
+				if (CanArrowEscape(arrow, remaining, level))
+				{
+					remaining.RemoveAt(i);
+					progress = true;
+					break; // Found one, restart the loop
+				}
+			}
+		}
+
+		return remaining.Count == 0;
+	}
+
+	bool CanArrowEscape(ArrowPath arrow, List<ArrowPath> remainingArrows, LevelData level)
+	{
+		if (arrow.body == null || arrow.body.Count < 2) return true;
+
+		Vector2Int direction = new Vector2Int(
+			Mathf.Clamp(arrow.body[0].x - arrow.body[1].x, -1, 1),
+			Mathf.Clamp(arrow.body[0].y - arrow.body[1].y, -1, 1)
+		);
+
+		Vector2Int currentPos = arrow.body[0];
+
+		// Use unsaved collections if we are checking the currently edited level
+		bool isCurrent = (level == selectedLevel);
+		var currentBlockers = isCurrent ? blockers : new HashSet<Vector2Int>(level.blockers ?? new List<Vector2Int>());
+		var currentHoles = isCurrent ? holes : new HashSet<Vector2Int>(level.holes ?? new List<Vector2Int>());
+		int w = isCurrent ? width : level.width;
+		int h = isCurrent ? height : level.height;
+
+		while (true)
+		{
+			currentPos += direction;
+
+			// Out of grid -> escaped
+			if (currentPos.x < 0 || currentPos.y < 0 || currentPos.x >= w || currentPos.y >= h)
+				return true;
+
+			// Reached a hole -> escaped
+			if (currentHoles.Contains(currentPos))
+				return true;
+
+			// Hit a blocker -> blocked
+			if (currentBlockers.Contains(currentPos))
+				return false;
+
+			// Hit another arrow -> blocked
+			foreach (var other in remainingArrows)
+			{
+				if (other == arrow) continue;
+				if (other.body != null && other.body.Contains(currentPos))
+					return false;
+			}
+		}
+	}
+
 	// ================= GRID PANEL =================
 	void DrawGridPanel()
 	{
@@ -502,6 +815,15 @@ public class LevelEditor : EditorWindow
 		lastGridRect = gridRect;
 
 		DrawGrid(gridRect);
+		
+		if (selectedLevel != null && selectedLevel.referenceImage != null)
+		{
+			Color prevColor = GUI.color;
+			GUI.color = new Color(1, 1, 1, selectedLevel.referenceOpacity);
+			GUI.DrawTexture(gridRect, selectedLevel.referenceImage, ScaleMode.StretchToFill);
+			GUI.color = prevColor;
+		}
+
 		DrawStaticCells(gridRect);
 		DrawSavedArrows(gridRect);
 		DrawCurrentPreview(gridRect);
@@ -874,7 +1196,7 @@ public class LevelEditor : EditorWindow
         int newHeight = EditorGUILayout.IntField("Height", height);
         timeLimit = EditorGUILayout.FloatField("Time Limit", timeLimit);
 
-        if (EditorGUI.EndChangeCheck() && selectedLevel != null)
+		if (EditorGUI.EndChangeCheck() && selectedLevel != null)
         {
 			width = newWidth;
 			height = newHeight;
@@ -882,6 +1204,74 @@ public class LevelEditor : EditorWindow
 			SaveCurrentLevel();
 		}
 
+		GUILayout.Space(5);
+		GUILayout.BeginHorizontal();
+		if (GUILayout.Button("Auto-Fit Grid", GUILayout.Height(25)))
+		{
+			AutoFitGrid();
+		}
+		
+		GUI.enabled = database != null && database.levels.Count > 0;
+		if (GUILayout.Button("Auto-Fit All", GUILayout.Height(25)))
+		{
+			if (EditorUtility.DisplayDialog("Auto-Fit All Levels", 
+				"Are you sure you want to automatically adjust the grid dimensions and shift all elements for EVERY level in the database?", "Yes", "Cancel"))
+			{
+				AutoFitAllLevels();
+			}
+		}
+		GUI.enabled = selectedLevel != null;
+		GUILayout.EndHorizontal();
+		GUILayout.Space(10);
+
+		// ================= VERIFICATION =================
+		GUILayout.Label("Verification", EditorStyles.boldLabel);
+		GUILayout.BeginHorizontal();
+		if (GUILayout.Button("Check This Level", GUILayout.Height(25)))
+		{
+			if (IsLevelCompletable(selectedLevel))
+				EditorUtility.DisplayDialog("Verification", "This level is completable!", "OK");
+			else
+				EditorUtility.DisplayDialog("Verification", "Warning: This level is NOT completable! Some arrows are unpassable.", "OK");
+		}
+		
+		GUI.enabled = database != null && database.levels.Count > 0;
+		if (GUILayout.Button("Check All Levels", GUILayout.Height(25)))
+		{
+			List<int> uncompletable = new List<int>();
+			for (int i = 0; i < database.levels.Count; i++)
+			{
+				if (!IsLevelCompletable(database.levels[i]))
+					uncompletable.Add(i + 1); // 1-based level index
+			}
+
+			if (uncompletable.Count == 0)
+			{
+				EditorUtility.DisplayDialog("Verification", "All levels are completable!", "OK");
+			}
+			else
+			{
+				string msg = "Warning! The following levels are not completable:\n" + string.Join(", ", uncompletable);
+				EditorUtility.DisplayDialog("Verification Failed", msg, "OK");
+			}
+		}
+		GUI.enabled = selectedLevel != null;
+		GUILayout.EndHorizontal();
+		GUILayout.Space(10);
+
+		// ================= BACKGROUND REFERENCE =================
+		GUILayout.Label("Background Reference", EditorStyles.boldLabel);
+		EditorGUI.BeginChangeCheck();
+		selectedLevel.referenceImage = (Texture2D)EditorGUILayout.ObjectField("Image", selectedLevel.referenceImage, typeof(Texture2D), false);
+		if (selectedLevel.referenceImage != null)
+		{
+			selectedLevel.referenceOpacity = EditorGUILayout.Slider("Opacity", selectedLevel.referenceOpacity, 0f, 1f);
+		}
+		if (EditorGUI.EndChangeCheck())
+		{
+			EditorUtility.SetDirty(selectedLevel);
+			Repaint();
+		}
 		GUILayout.Space(10);
 
 		// ================= COLOR PALETTE =================

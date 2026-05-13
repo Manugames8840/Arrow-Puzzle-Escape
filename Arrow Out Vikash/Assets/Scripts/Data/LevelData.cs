@@ -22,6 +22,12 @@ public class LevelData : ScriptableObject
 	[Header("Variation Settings")]
 	public bool isPaid = false;
 	public int coinCost = 100;
+
+#if UNITY_EDITOR
+	[Header("Editor Reference")]
+	public Texture2D referenceImage;
+	public float referenceOpacity = 0.5f;
+#endif
 }
 
 public enum LevelType
