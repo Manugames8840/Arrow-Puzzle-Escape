@@ -25,11 +25,19 @@
   <Project Path="CFXR.WelcomeScreen.csproj" />
   <Project Path="Google.Play.Core.csproj" />
   <Project Path="Google.Play.Review.csproj" />
+  <Project Path="GoogleMobileAds.Mediation.UnityAds.iOS.csproj" />
   <Project Path="KinoBloom.Runtime.csproj" />
+  <Project Path="GoogleMobileAds.Mediation.AppLovin.Common.csproj" />
   <Project Path="Dreamteck.Utilities.Editor.csproj" />
   <Project Path="FirebaseMessagingActivityGenerator.csproj" />
+  <Project Path="GoogleMobileAds.Mediation.UnityAds.Common.csproj" />
+  <Project Path="GoogleMobileAds.Mediation.AppLovin.iOS.csproj" />
+  <Project Path="GoogleMobileAds.Mediation.UnityAds.Api.csproj" />
+  <Project Path="GoogleMobileAds.Mediation.AppLovin.Android.csproj" />
   <Project Path="CFXREditor.csproj" />
+  <Project Path="GoogleMobileAds.Mediation.UnityAds.Android.csproj" />
   <Project Path="Core.Settings.csproj" />
   <Project Path="CFXRDemo.csproj" />
   <Project Path="IngameDebugConsole.Editor.csproj" />
+  <Project Path="GoogleMobileAds.Mediation.AppLovin.Api.csproj" />
 </Solution>

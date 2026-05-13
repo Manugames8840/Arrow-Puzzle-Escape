@@ -74,6 +74,11 @@ namespace Framework
 		{
 			if (Condition == GameConditionType.Star)
 			{
+				if (moveValue > Stars.Count)
+				{
+					return;
+				}
+
 				for (int i = 0; i < (int)moveValue; i++)
 				{
 					if (Stars.Count < i)

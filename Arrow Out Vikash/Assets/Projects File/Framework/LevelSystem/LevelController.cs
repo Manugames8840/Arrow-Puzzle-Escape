@@ -163,8 +163,8 @@ namespace Framework
 		private void InitMove()
 		{
 			int maxMoves = _gameConstrain == GameConditionType.Star
-				? 3
-				: LevelRepresentation.LevelData.arrowPaths.Count + 5;
+				? 20
+				: LevelRepresentation.LevelData.arrowPaths.Count + 3;
 
 			GameplayMove.SetMaxMove(maxMoves);
 		}

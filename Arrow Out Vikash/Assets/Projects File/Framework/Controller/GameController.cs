@@ -189,6 +189,7 @@ namespace Framework
 			isGameFinished = true;
 			_levelCompleteCount = 0;
 
+			OnLevelFailed();
 			levelController.OnLevelFailed();
 			levelController.HandleGameEnd();
 			MyEventArgs.GameControllerEvents.LevelCompleteCount = 0;
@@ -250,24 +251,22 @@ namespace Framework
 
 			AnalyticsController.OnLevelComplete("level_complete", new Dictionary<string, object> {
 				{ "level", levelIndex },
-				{ "timeTaken", LevelController.GameplayTimer?.GetTotalTimeSpent().TotalSeconds } ,
-				{ "timeRequired", LevelController.GameplayTimer?.CurrentTimeSpan.TotalSeconds}
+				{ "maxMoves", LevelController.GameplayMove?.MaxMove } ,
+				{ "timeRequired", LevelController.GameplayMove?.GetRemaningMoves()}
 			});
 		}
 
 		public static void OnLevelFailed()
 		{
-			LivesSystem.UnlockLife(true);
-
 			ActiveSession currentSession = ActiveSession.Current;
 			int levelIndex = currentSession.DisplayLevelIndex;
 
 			LevelController.InvokeScenario(LevelScenario.LevelFailed);
 
 			AnalyticsController.OnLevelFailed("level_failed", new Dictionary<string, object> {
-				{ "level", levelIndex },
-				{ "timeTaken", LevelController.GameplayTimer?.GetTotalTimeSpent().TotalSeconds},
-				{ "timeRequired", LevelController.GameplayTimer?.CurrentTimeSpan.TotalSeconds}
+			{ "level", levelIndex },
+				{ "maxMoves", LevelController.GameplayMove?.MaxMove } ,
+				{ "timeRequired", LevelController.GameplayMove?.GetRemaningMoves()}
 			});
 		}
 
@@ -327,8 +326,8 @@ namespace Framework
 
 			AnalyticsController.OnLevelReplay("level_replay", new Dictionary<string, object> {
 				{ "level", levelIndex },
-				{ "timeTaken", LevelController.GameplayTimer?.GetTotalTimeSpent().TotalSeconds},
-				{ "timeRequired", LevelController.GameplayTimer?.CurrentTimeSpan.TotalSeconds}
+				{ "maxMoves", LevelController.GameplayMove?.MaxMove } ,
+				{ "timeRequired", LevelController.GameplayMove?.GetRemaningMoves()}
 			});
 		}
 
