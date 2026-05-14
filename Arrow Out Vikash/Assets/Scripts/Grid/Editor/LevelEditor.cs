@@ -43,6 +43,10 @@ public class LevelEditor : EditorWindow
     int swapFirstIndex = -1;
     int swapSecondIndex = -1;
 
+	// Shuffle range
+	int shuffleStartIndex = 1;
+	int shuffleEndIndex = 10;
+
 	// ================= SELECTION =================
 	ArrowPath selectedArrow = null;
 	Vector2Int selectedArrowTail = Vector2Int.zero;
@@ -274,6 +278,29 @@ public class LevelEditor : EditorWindow
         {
             UnselectSwapLevels();
         }
+
+		GUILayout.Space(10);
+		GUILayout.Label("Bulk Level Actions", EditorStyles.boldLabel);
+		GUILayout.BeginHorizontal();
+		GUILayout.Label("From", GUILayout.Width(35));
+		shuffleStartIndex = EditorGUILayout.IntField(shuffleStartIndex, GUILayout.Width(40));
+		GUILayout.Label("To", GUILayout.Width(20));
+		shuffleEndIndex = EditorGUILayout.IntField(shuffleEndIndex, GUILayout.Width(40));
+		
+		if (GUILayout.Button("Shuffle"))
+		{
+			ShuffleLevels();
+		}
+		
+		GUI.backgroundColor = new Color(0.9f, 0.3f, 0.3f);
+		if (GUILayout.Button("Delete"))
+		{
+			DeleteLevelsInRange();
+		}
+		GUI.backgroundColor = Color.white;
+		
+		GUILayout.EndHorizontal();
+		GUILayout.Space(10);
 
 		GUIStyle newLevelButtonStyle = new GUIStyle(GUI.skin.button);
 		newLevelButtonStyle.fontStyle = FontStyle.Bold;
@@ -1257,6 +1284,17 @@ public class LevelEditor : EditorWindow
 		}
 		GUI.enabled = selectedLevel != null;
 		GUILayout.EndHorizontal();
+		
+		GUILayout.Space(5);
+		GUI.enabled = database != null && database.levels.Count > 0;
+		GUI.backgroundColor = new Color(0.9f, 0.3f, 0.3f);
+		if (GUILayout.Button("Delete Uncompletable Levels", GUILayout.Height(25)))
+		{
+			DeleteUncompletableLevels();
+		}
+		GUI.backgroundColor = Color.white;
+		GUI.enabled = selectedLevel != null;
+		
 		GUILayout.Space(10);
 
 		// ================= BACKGROUND REFERENCE =================
@@ -1568,6 +1606,145 @@ public class LevelEditor : EditorWindow
         UnselectSwapLevels();
         Repaint();
     }
+
+	void ShuffleLevels()
+	{
+		if (database == null || database.levels == null || database.levels.Count == 0) return;
+
+		int start = Mathf.Clamp(shuffleStartIndex - 1, 0, database.levels.Count - 1);
+		int end = Mathf.Clamp(shuffleEndIndex - 1, 0, database.levels.Count - 1);
+
+		if (start >= end) return;
+
+		if (EditorUtility.DisplayDialog("Shuffle Levels", 
+			$"Are you sure you want to randomly shuffle levels from {start + 1} to {end + 1}?", "Yes", "Cancel"))
+		{
+			// Shuffle the sublist using Fisher-Yates
+			for (int i = end; i > start; i--)
+			{
+				int randomIndex = UnityEngine.Random.Range(start, i + 1);
+				var temp = database.levels[i];
+				database.levels[i] = database.levels[randomIndex];
+				database.levels[randomIndex] = temp;
+			}
+
+			EditorUtility.SetDirty(database);
+			AssetDatabase.SaveAssets();
+
+			// Reload selection if affected
+			if (selectedLevelIndex >= start && selectedLevelIndex <= end)
+			{
+				SelectLevel(selectedLevelIndex);
+			}
+			
+			UnselectSwapLevels();
+			Repaint();
+		}
+	}
+
+	void DeleteLevelsInRange()
+	{
+		if (database == null || database.levels == null || database.levels.Count == 0) return;
+
+		int start = Mathf.Clamp(shuffleStartIndex - 1, 0, database.levels.Count - 1);
+		int end = Mathf.Clamp(shuffleEndIndex - 1, 0, database.levels.Count - 1);
+
+		if (start > end) return;
+
+		int count = end - start + 1;
+
+		if (EditorUtility.DisplayDialog("Delete Levels", 
+			$"Are you sure you want to PERMANENTLY DELETE {count} levels (from {start + 1} to {end + 1})?\nThis action cannot be undone!", "Delete", "Cancel"))
+		{
+			// Remove from end to start so indices don't shift during removal
+			for (int i = end; i >= start; i--)
+			{
+				var levelAsset = database.levels[i];
+				database.levels.RemoveAt(i);
+
+				if (levelAsset != null)
+				{
+					string path = AssetDatabase.GetAssetPath(levelAsset);
+					if (!string.IsNullOrEmpty(path))
+					{
+						AssetDatabase.DeleteAsset(path);
+					}
+				}
+			}
+
+			EditorUtility.SetDirty(database);
+			AssetDatabase.SaveAssets();
+
+			// Handle selection
+			if (selectedLevelIndex >= start && selectedLevelIndex <= end)
+			{
+				selectedLevel = null;
+				selectedLevelIndex = -1;
+				ClearEditor();
+			}
+			else if (selectedLevelIndex > end)
+			{
+				SelectLevel(selectedLevelIndex - count);
+			}
+			else if (selectedLevelIndex >= 0 && selectedLevelIndex < start)
+			{
+				SelectLevel(selectedLevelIndex);
+			}
+			
+			UnselectSwapLevels();
+			Repaint();
+		}
+	}
+
+	void DeleteUncompletableLevels()
+	{
+		if (database == null || database.levels == null || database.levels.Count == 0) return;
+
+		List<int> uncompletableIndices = new List<int>();
+		for (int i = 0; i < database.levels.Count; i++)
+		{
+			if (!IsLevelCompletable(database.levels[i]))
+			{
+				uncompletableIndices.Add(i);
+			}
+		}
+
+		if (uncompletableIndices.Count == 0)
+		{
+			EditorUtility.DisplayDialog("Delete Uncompletable", "No uncompletable levels found! All levels are currently completable.", "OK");
+			return;
+		}
+
+		if (EditorUtility.DisplayDialog("Delete Uncompletable", 
+			$"Found {uncompletableIndices.Count} uncompletable levels.\nAre you sure you want to PERMANENTLY DELETE them from the project?", "Delete", "Cancel"))
+		{
+			// Delete from highest index to lowest so remaining indices don't shift
+			for (int i = uncompletableIndices.Count - 1; i >= 0; i--)
+			{
+				int indexToRemove = uncompletableIndices[i];
+				var levelAsset = database.levels[indexToRemove];
+				database.levels.RemoveAt(indexToRemove);
+
+				if (levelAsset != null)
+				{
+					string path = AssetDatabase.GetAssetPath(levelAsset);
+					if (!string.IsNullOrEmpty(path))
+					{
+						AssetDatabase.DeleteAsset(path);
+					}
+				}
+			}
+
+			EditorUtility.SetDirty(database);
+			AssetDatabase.SaveAssets();
+
+			selectedLevel = null;
+			selectedLevelIndex = -1;
+			ClearEditor();
+			UnselectSwapLevels();
+			Repaint();
+		}
+	}
 
     // ================= HELPERS =================
 	Vector2Int GetCellFromMouse(Rect grid, Vector2 mouse)
