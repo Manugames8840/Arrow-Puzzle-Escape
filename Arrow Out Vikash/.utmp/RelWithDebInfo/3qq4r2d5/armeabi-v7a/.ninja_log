@@ -1,23 +1,23 @@
 # ninja log v5
-39	3796	8001232848329090	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f5858370d62627d8
-101	520	8001232815468494	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	75f01e73581f8c22
-520	1539	8001232823189928	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3qq4r2d5/obj/armeabi-v7a/libswappywrapper.so	77ff0701b3b9d8a0
-81	3288	8001232842926367	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	54851059de744e09
-3796	3931	8001232849735256	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3qq4r2d5/obj/armeabi-v7a/libgame.so	cf74451f870c72fc
-12	3164	8001232841966387	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	725a00c86dd744e4
-73	3267	8001232842896379	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6ec36c04fd86f768
-23	2970	8001232839900194	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	51b7a05dcd290dd0
-92	3421	8001232844547104	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	4d50cbd524f053ee
-48	3052	8001232840826389	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	23c9ae3986818176
-61	3641	8001232846767792	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	e26cd5e1dd204f8d
-68	401	8003099971804164	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	75f01e73581f8c22
-401	799	8003099975485132	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3qq4r2d5/obj/armeabi-v7a/libswappywrapper.so	77ff0701b3b9d8a0
-16	2109	8003099988872685	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	51b7a05dcd290dd0
-46	2121	8003099988942682	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6ec36c04fd86f768
-32	2208	8003099989862682	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	23c9ae3986818176
-39	2231	8003099990072713	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	54851059de744e09
-25	2302	8003099990792762	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	725a00c86dd744e4
-61	2420	8003099991953014	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	4d50cbd524f053ee
-53	2688	8003099994595740	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	e26cd5e1dd204f8d
-7	2951	8003099997071437	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f5858370d62627d8
-2951	3122	8003099999022308	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3qq4r2d5/obj/armeabi-v7a/libgame.so	cf74451f870c72fc
+13	2113	8004737135372622	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f5858370d62627d8
+41	291	8004737117125869	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	75f01e73581f8c22
+292	449	8004737118586290	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3qq4r2d5/obj/armeabi-v7a/libswappywrapper.so	77ff0701b3b9d8a0
+25	1713	8004737131334144	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	54851059de744e09
+2113	2180	8004737136082877	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3qq4r2d5/obj/armeabi-v7a/libgame.so	cf74451f870c72fc
+17	1794	8004737132164126	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	725a00c86dd744e4
+29	1654	8004737130734159	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6ec36c04fd86f768
+9	1631	8004737130504150	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	51b7a05dcd290dd0
+35	1872	8004737132954122	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	4d50cbd524f053ee
+5	1687	8004737131084166	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	23c9ae3986818176
+21	2008	8004737134329395	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	e26cd5e1dd204f8d
+47	288	8006302789197572	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	75f01e73581f8c22
+288	546	8006302791567568	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3qq4r2d5/obj/armeabi-v7a/libswappywrapper.so	77ff0701b3b9d8a0
+13	1618	8006302802447581	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	51b7a05dcd290dd0
+22	1628	8006302802587583	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6ec36c04fd86f768
+4	1655	8006302802857563	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	23c9ae3986818176
+28	1736	8006302803667563	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	54851059de744e09
+9	1769	8006302804017553	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	725a00c86dd744e4
+40	1889	8006302805216871	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	4d50cbd524f053ee
+34	1977	8006302806105151	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	e26cd5e1dd204f8d
+18	2103	8006302807356848	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	f5858370d62627d8
+2103	2182	8006302808185581	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3qq4r2d5/obj/armeabi-v7a/libgame.so	cf74451f870c72fc
