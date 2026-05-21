@@ -57,7 +57,9 @@ public class LevelEditor : EditorWindow
 	int selectedLevelIndex = -1;
 	Vector2 levelListScroll; // Scroll for level list
     Vector2 levelPreviewScroll; // Scroll for level preview panel
+	Vector2 rightPanelScroll; // Scroll for right panel
 	int currentPage = 0;
+	bool showLevelPreview = true;
 
 	// ================= DRAW STATE =================
 	bool drawingArrow;
@@ -112,7 +114,10 @@ public class LevelEditor : EditorWindow
         GUILayout.BeginHorizontal();
 
         DrawLevelListPanel();
-        DrawLevelGridPanel(); // New grid view of levels
+        if (showLevelPreview)
+        {
+            DrawLevelGridPanel(); // New grid view of levels
+        }
         DrawGridPanel();
         DrawRightPanel();
 
@@ -314,6 +319,42 @@ public class LevelEditor : EditorWindow
 			CreateNewLevel();
 		}
 
+		// ================= PLAY LEVEL BUTTON =================
+		GUILayout.Space(15);
+
+		GUI.enabled = selectedLevel != null && !EditorApplication.isPlaying;
+
+		GUIStyle playButtonStyle = new GUIStyle(GUI.skin.button);
+		playButtonStyle.fontStyle = FontStyle.Bold;
+		playButtonStyle.fontSize = 14;
+		playButtonStyle.normal.background = MakeTex(2, 2, new Color(0.1f, 0.5f, 0.9f));
+		playButtonStyle.normal.textColor = Color.white;
+		playButtonStyle.hover.background = MakeTex(2, 2, new Color(0.15f, 0.6f, 1f));
+		playButtonStyle.hover.textColor = Color.white;
+		playButtonStyle.active.background = MakeTex(2, 2, new Color(0.08f, 0.4f, 0.75f));
+		playButtonStyle.active.textColor = Color.white;
+
+		if (GUILayout.Button("▶  Play This Level", playButtonStyle, GUILayout.Height(40)))
+		{
+			PlaySelectedLevel();
+		}
+
+		if (EditorApplication.isPlaying)
+		{
+			GUIStyle stopStyle = new GUIStyle(GUI.skin.button);
+			stopStyle.fontStyle = FontStyle.Bold;
+			stopStyle.fontSize = 12;
+			stopStyle.normal.background = MakeTex(2, 2, new Color(0.8f, 0.2f, 0.2f));
+			stopStyle.normal.textColor = Color.white;
+			stopStyle.hover.background = MakeTex(2, 2, new Color(0.9f, 0.25f, 0.25f));
+
+			if (GUILayout.Button("■  Stop Playing", stopStyle, GUILayout.Height(30)))
+			{
+				EditorApplication.isPlaying = false;
+			}
+		}
+
+		GUI.enabled = true;
 		GUILayout.EndVertical();
 	}
 
@@ -469,7 +510,10 @@ public class LevelEditor : EditorWindow
 	void CalculateCellSize()
 	{
 		// Calculate available space for grid
-		float availableWidth = position.width - (LEFT_PANEL_WIDTH * 2) - RIGHT_PANEL_WIDTH - 40;
+		float panelsWidth = LEFT_PANEL_WIDTH + RIGHT_PANEL_WIDTH;
+		if (showLevelPreview) panelsWidth += LEFT_PANEL_WIDTH;
+		
+		float availableWidth = position.width - panelsWidth - 40;
 		float availableHeight = position.height - 100;
 
 		// Calculate cell size to fit both dimensions
@@ -1209,17 +1253,28 @@ public class LevelEditor : EditorWindow
 		);
 	}
 
-	    // ================= RIGHT PANEL =================
+	// ================= RIGHT PANEL =================
     void DrawRightPanel()
     {
 		GUILayout.BeginVertical(GUILayout.Width(RIGHT_PANEL_WIDTH));
+		rightPanelScroll = GUILayout.BeginScrollView(rightPanelScroll, false, false, GUILayout.ExpandHeight(true));
+
+		GUILayout.Label("View Options", EditorStyles.boldLabel);
+		EditorGUI.BeginChangeCheck();
+		showLevelPreview = EditorGUILayout.Toggle("Show Level Preview", showLevelPreview);
+		if (EditorGUI.EndChangeCheck())
+		{
+			CalculateCellSize();
+			Repaint();
+		}
+		GUILayout.Space(10);
 
 		GUI.enabled = selectedLevel != null;
 
-		        GUILayout.Label("Grid Settings", EditorStyles.boldLabel);
+		GUILayout.Label("Grid Settings", EditorStyles.boldLabel);
 
         EditorGUI.BeginChangeCheck();
-		        int newWidth = EditorGUILayout.IntField("Width", width);
+		int newWidth = EditorGUILayout.IntField("Width", width);
         int newHeight = EditorGUILayout.IntField("Height", height);
         timeLimit = EditorGUILayout.FloatField("Time Limit", timeLimit);
 
@@ -1248,6 +1303,18 @@ public class LevelEditor : EditorWindow
 			}
 		}
 		GUI.enabled = selectedLevel != null;
+		GUILayout.EndHorizontal();
+
+		GUILayout.Space(5);
+		GUILayout.BeginHorizontal();
+		if (GUILayout.Button("Rotate +90°", GUILayout.Height(25)))
+		{
+			RotateGrid(true);
+		}
+		if (GUILayout.Button("Rotate -90°", GUILayout.Height(25)))
+		{
+			RotateGrid(false);
+		}
 		GUILayout.EndHorizontal();
 		GUILayout.Space(10);
 
@@ -1375,7 +1442,21 @@ public class LevelEditor : EditorWindow
 			}
 
 			GUILayout.Space(10);
+			GUILayout.Space(10);
 		}
+
+		GUILayout.Label("Arrow Actions", EditorStyles.boldLabel);
+		GUI.enabled = selectedLevel != null && arrows.Count > 0;
+		if (GUILayout.Button("Reverse All Arrows"))
+		{
+			if (EditorUtility.DisplayDialog("Reverse Arrows", 
+				"Are you sure you want to reverse the direction of all arrows in this level? (Head becomes Tail, Tail becomes Head)", "Yes", "Cancel"))
+			{
+				ReverseAllArrows();
+			}
+		}
+		GUI.enabled = selectedLevel != null;
+		GUILayout.Space(10);
 
 		GUILayout.Label("Tools", EditorStyles.boldLabel);
 		currentTool = (PaintTool)GUILayout.Toolbar(
@@ -1437,43 +1518,7 @@ public class LevelEditor : EditorWindow
 		}
 
 		GUI.enabled = true;
-
-		// ================= PLAY LEVEL BUTTON =================
-		GUILayout.Space(15);
-
-		GUI.enabled = selectedLevel != null && !EditorApplication.isPlaying;
-
-		GUIStyle playButtonStyle = new GUIStyle(GUI.skin.button);
-		playButtonStyle.fontStyle = FontStyle.Bold;
-		playButtonStyle.fontSize = 14;
-		playButtonStyle.normal.background = MakeTex(2, 2, new Color(0.1f, 0.5f, 0.9f));
-		playButtonStyle.normal.textColor = Color.white;
-		playButtonStyle.hover.background = MakeTex(2, 2, new Color(0.15f, 0.6f, 1f));
-		playButtonStyle.hover.textColor = Color.white;
-		playButtonStyle.active.background = MakeTex(2, 2, new Color(0.08f, 0.4f, 0.75f));
-		playButtonStyle.active.textColor = Color.white;
-
-		if (GUILayout.Button("▶  Play This Level", playButtonStyle, GUILayout.Height(40)))
-		{
-			PlaySelectedLevel();
-		}
-
-		if (EditorApplication.isPlaying)
-		{
-			GUIStyle stopStyle = new GUIStyle(GUI.skin.button);
-			stopStyle.fontStyle = FontStyle.Bold;
-			stopStyle.fontSize = 12;
-			stopStyle.normal.background = MakeTex(2, 2, new Color(0.8f, 0.2f, 0.2f));
-			stopStyle.normal.textColor = Color.white;
-			stopStyle.hover.background = MakeTex(2, 2, new Color(0.9f, 0.25f, 0.25f));
-
-			if (GUILayout.Button("■  Stop Playing", stopStyle, GUILayout.Height(30)))
-			{
-				EditorApplication.isPlaying = false;
-			}
-		}
-
-		GUI.enabled = true;
+		GUILayout.EndScrollView();
 		GUILayout.EndVertical();
 	}
 
@@ -1744,6 +1789,98 @@ public class LevelEditor : EditorWindow
 			UnselectSwapLevels();
 			Repaint();
 		}
+	}
+
+	void ReverseAllArrows()
+	{
+		if (selectedLevel == null || arrows.Count == 0) return;
+
+		Dictionary<Vector2Int, ArrowPath> newArrowsDict = new Dictionary<Vector2Int, ArrowPath>();
+		
+		foreach (var kvp in arrows)
+		{
+			ArrowPath path = kvp.Value;
+			if (path.body != null && path.body.Count > 1)
+			{
+				path.body.Reverse();
+			}
+			// The tail is the last element
+			Vector2Int newTail = path.body[^1];
+			newArrowsDict[newTail] = path;
+		}
+		
+		arrows = newArrowsDict;
+		
+		// The selected arrow might now have a different tail
+		if (selectedArrow != null && selectedArrow.body != null && selectedArrow.body.Count > 0)
+		{
+			selectedArrowTail = selectedArrow.body[^1];
+		}
+		
+		SaveCurrentLevel();
+		Repaint();
+	}
+
+	void RotateGrid(bool clockwise)
+	{
+		if (selectedLevel == null) return;
+
+		int oldWidth = width;
+		int oldHeight = height;
+
+		width = oldHeight;
+		height = oldWidth;
+
+		Vector2Int RotatePoint(Vector2Int p)
+		{
+			if (clockwise)
+				return new Vector2Int(p.y, oldWidth - 1 - p.x);
+			else
+				return new Vector2Int(oldHeight - 1 - p.y, p.x);
+		}
+
+		// Rotate arrows
+		Dictionary<Vector2Int, ArrowPath> newArrows = new Dictionary<Vector2Int, ArrowPath>();
+		foreach (var kvp in arrows)
+		{
+			ArrowPath path = kvp.Value;
+			if (path.body != null)
+			{
+				for (int i = 0; i < path.body.Count; i++)
+				{
+					path.body[i] = RotatePoint(path.body[i]);
+				}
+				if (path.body.Count > 0)
+				{
+					newArrows[path.body[^1]] = path;
+				}
+			}
+		}
+		arrows = newArrows;
+
+		// Rotate blockers
+		HashSet<Vector2Int> newBlockers = new HashSet<Vector2Int>();
+		foreach (var b in blockers) newBlockers.Add(RotatePoint(b));
+		blockers = newBlockers;
+
+		// Rotate holes
+		HashSet<Vector2Int> newHoles = new HashSet<Vector2Int>();
+		foreach (var h in holes) newHoles.Add(RotatePoint(h));
+		holes = newHoles;
+
+		// Rotate portals
+		HashSet<Vector2Int> newPortals = new HashSet<Vector2Int>();
+		foreach (var p in portals) newPortals.Add(RotatePoint(p));
+		portals = newPortals;
+
+		if (selectedArrow != null && selectedArrow.body != null && selectedArrow.body.Count > 0)
+		{
+			selectedArrowTail = selectedArrow.body[^1];
+		}
+
+		CalculateCellSize();
+		SaveCurrentLevel();
+		Repaint();
 	}
 
     // ================= HELPERS =================
