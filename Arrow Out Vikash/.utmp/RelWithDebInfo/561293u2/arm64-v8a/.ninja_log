@@ -1,0 +1,12 @@
+# ninja log v5
+52	550	8011314391880289	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	fb220aa078873f96
+551	1212	8011314397432626	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/561293u2/obj/arm64-v8a/libswappywrapper.so	ede8c4ead507ec56
+29	3679	8011314423231474	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	cd0df5709cecf09c
+17	3692	8011314423331454	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	1d04a9528c0ef2e0
+1	3733	8011314423791506	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	132211bfcd974ec4
+44	3757	8011314424031466	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	d7c39945bbf4a567
+12	3842	8011314424901469	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	49ff35f58ced3787
+22	4177	8011314428079863	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	b0f66c8271d0d4a4
+7	4456	8011314430976755	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	6e521522efbd7ac
+36	4477	8011314431216725	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	7b63a249b48f1473
+4478	4609	8011314432561863	D:/Vikash Client Project/Arrow Out/Arrow Out Vikash/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/561293u2/obj/arm64-v8a/libgame.so	614aaf36f2092028

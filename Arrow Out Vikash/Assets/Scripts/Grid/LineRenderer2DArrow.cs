@@ -10,7 +10,7 @@ namespace ArrowOut
 		private readonly List<BoxCollider> segmentColliders = new List<BoxCollider>();
 		[SerializeField] private int cornerResolution = 10;
 		[SerializeField] private float cornerRadius = 0.1f;
-		[SerializeField] private float colliderWidth = 1f; // Should match lineRenderer width
+		[SerializeField] private float colliderWidth = 1.5f; // Should match lineRenderer width
 
 		private LineRenderer lineRenderer;
 		private LineRenderer previewLineRenderer;

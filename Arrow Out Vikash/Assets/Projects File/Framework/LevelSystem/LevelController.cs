@@ -166,7 +166,18 @@ namespace Framework
 				? 3
 				: LevelRepresentation.LevelData.arrowPaths.Count + 3;
 
-			GameplayMove.SetMaxMove(maxMoves);
+			int savedMoves = ActiveSession.Current.Save.RemainingMoves;
+			if (savedMoves > 0)
+			{
+				GameplayMove.SetMaxMove(savedMoves);
+			}
+			else
+			{
+				GameplayMove.SetMaxMove(maxMoves);
+				ActiveSession.Current.Save.RemainingMoves = -1;
+				ActiveSession.Current.Save.ResetClearedArrows(ActiveSession.Current.LevelIndex);
+				SaveController.Save(true);
+			}
 		}
 
 		public static void SubstractMove()

@@ -53,6 +53,9 @@ namespace Framework
             levelSave.IsPlayingRandomLevel = false;
             levelSave.LastPlayerLevelIndex = -1;
 
+            levelSave.ResetClearedArrows(levelSave.RealLevelIndex);
+            levelSave.RemainingMoves = -1;
+
             if (FirstTimeCompletedLevel)
             {
                 levelSave.CompletedLevelIndex = levelSave.RealLevelIndex;

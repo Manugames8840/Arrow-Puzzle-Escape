@@ -11,7 +11,7 @@ public class LevelEditor : EditorWindow
 	// ================= CONFIG =================
 	const float BASE_CELL_SIZE = 40f;
 	const float LEFT_PANEL_WIDTH = 280f;
-	const float RIGHT_PANEL_WIDTH = 260f;
+	const float RIGHT_PANEL_WIDTH = 280f;
 	const float MIN_CELL_SIZE = 15f;
 	const float MAX_GRID_HEIGHT = 600f;
 	const int PAGE_SIZE = 10;
@@ -1257,7 +1257,7 @@ public class LevelEditor : EditorWindow
     void DrawRightPanel()
     {
 		GUILayout.BeginVertical(GUILayout.Width(RIGHT_PANEL_WIDTH));
-		rightPanelScroll = GUILayout.BeginScrollView(rightPanelScroll, false, false, GUILayout.ExpandHeight(true));
+		rightPanelScroll = GUILayout.BeginScrollView(rightPanelScroll, false, false, GUIStyle.none, GUI.skin.verticalScrollbar, GUILayout.ExpandHeight(true));
 
 		GUILayout.Label("View Options", EditorStyles.boldLabel);
 		EditorGUI.BeginChangeCheck();

@@ -17,7 +17,8 @@ namespace ArrowOut
 			spriteRenderer.sprite = headSprite;
 			spriteRenderer.sortingOrder = 1;
 			spriteRenderer.color = color;
-			gameObject.AddComponent<BoxCollider2D>();
+			var box = gameObject.AddComponent<BoxCollider2D>();
+			box.size = Vector2.one * 1.5f;
 		}
 
 		public override void SetColor(Color color)

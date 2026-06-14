@@ -31,6 +31,7 @@ namespace ArrowOut
 		private List<Vector2Int> previewPath;
 		private List<Vector2Int> originalBodyPositions;
 		private bool isIntroPlaying;
+		private bool isRemoving;
 
 		// Configuration
 		private Color originalColor = Color.white;
@@ -325,6 +326,7 @@ namespace ArrowOut
 		private IEnumerator ExtendArrow()
 		{
 			isExtending = true;
+			isRemoving = true;
 			Vector2Int direction = GetCurrentDirection();
 			OnArrowComplete();
 
@@ -433,13 +435,75 @@ namespace ArrowOut
 			introSegmentDelay = speed;
 		}
 
+		private Coroutine _introCoroutine;
+
 		/// <summary>
 		/// Plays an intro animation that grows the arrow from tail to head.
 		/// All segments start hidden, then reveal one by one from tail toward head.
 		/// </summary>
 		public Coroutine PlayIntroAnimation()
 		{
-			return StartCoroutine(IntroAnimationCoroutine());
+			_introCoroutine = StartCoroutine(IntroAnimationCoroutine());
+			return _introCoroutine;
+		}
+
+		public void CompleteIntroAnimation()
+		{
+			if (!isIntroPlaying) return;
+
+			if (_introCoroutine != null)
+			{
+				StopCoroutine(_introCoroutine);
+				_introCoroutine = null;
+			}
+
+			// Final: show the complete arrow with the head
+			arrowRenderer?.UpdatePath(body);
+
+			if (arrowHead != null && arrowHead.GetGameObject() != null)
+			{
+				arrowHead.GetGameObject().SetActive(true);
+				arrowHead.UpdatePosition(body[0]);
+			}
+
+			UpdateHeadRotation();
+			isIntroPlaying = false;
+		}
+
+		public void CompleteActiveMovements()
+		{
+			if (isIntroPlaying)
+			{
+				CompleteIntroAnimation();
+				return;
+			}
+
+			if (isExtending || isRemoving)
+			{
+				StopAllCoroutines();
+				_introCoroutine = null;
+
+				if (!isValidMove)
+				{
+					// Bouncing back: restore original position and make interactive again
+					body = new List<Vector2Int>(originalBodyPositions);
+					foreach (var pos in body)
+					{
+						GridManager.Instance.DisableGridDot(pos);
+					}
+					isExtending = false;
+					UpdateVisuals();
+				}
+				else
+				{
+					// Exiting/collecting: instantly remove and cleanup
+					if (GridManager.Instance != null)
+					{
+						GridManager.Instance.RemoveArrow(tailPosition);
+					}
+					Cleanup();
+				}
+			}
 		}
 
 		public void SetTheme(ArrowColorMode mode)
@@ -515,6 +579,7 @@ namespace ArrowOut
 		private IEnumerator AnimateRemoval()
 		{
 			isExtending = false;
+			isRemoving = true;
 
 			for (int i = body.Count - 1; i >= 0; i--)
 			{

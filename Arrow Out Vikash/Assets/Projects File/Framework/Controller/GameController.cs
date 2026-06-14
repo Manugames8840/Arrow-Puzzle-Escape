@@ -272,6 +272,11 @@ namespace Framework
 
 		public static void Replay(SimpleCallback onReplayCallback = null)
 		{
+			ActiveSession currentSession = ActiveSession.Current;
+			currentSession.Save.ResetClearedArrows(currentSession.LevelIndex);
+			currentSession.Save.RemainingMoves = -1;
+			SaveController.Save(true);
+
 			if (LivesSystem.Lives > 0 || LivesSystem.InfiniteMode)
 			{
 				onReplayCallback?.Invoke();
@@ -321,7 +326,6 @@ namespace Framework
 				});
 			}
 
-			ActiveSession currentSession = ActiveSession.Current;
 			int levelIndex = currentSession.DisplayLevelIndex;
 
 			AnalyticsController.OnLevelReplay("level_replay", new Dictionary<string, object> {
@@ -344,6 +348,11 @@ namespace Framework
 
 		public static void LoadMenu(SimpleCallback unloadCallback = null)
 		{
+			ActiveSession currentSession = ActiveSession.Current;
+			currentSession.Save.ResetClearedArrows(currentSession.LevelIndex);
+			currentSession.Save.RemainingMoves = -1;
+			SaveController.Save(true);
+
 			Unload(() =>
 			{
 				LoadGameMenuScene();
@@ -359,23 +368,28 @@ namespace Framework
 
 			if (Monetization.IsActive && Monetization.Settings.IsShowOnLevelComplete)
 			{
-				if (Monetization.Settings.LevelRequire < ActiveSession.Current.DisplayLevelIndex && _levelCompleteCount % 2 == 0)
+				if (Monetization.Settings.LevelRequire < ActiveSession.Current.DisplayLevelIndex)
 				{
-					_levelCompleteCount = 0;
-					AdsManager.ShowInterstitial((result) =>
+					if (_levelCompleteCount % 2 == 0)
 					{
-						onUnloaded?.Invoke();
-					}, "level_complete_Interstitial_ads");
-				}
-				else
-				{
+						AdsManager.ShowVideoInterstitial((result) =>
+						{
+							onUnloaded?.Invoke();
+						}, "level_complete_InterstitialVideo_ads");
+					}
+					else
+					{
+						AdsManager.ShowInterstitial((result) =>
+						{
+							onUnloaded?.Invoke();
+						}, "level_complete_Interstitial_ads");
+					}
+					_levelCompleteCount = 0;
 					onUnloaded?.Invoke();
+					return;
 				}
 			}
-			else
-			{
-				onUnloaded?.Invoke();
-			}
+			onUnloaded?.Invoke();
 		}
 
 		public static void Unload(SimpleBoolCallback onUnloaded, bool isGameScene = false)
@@ -466,6 +480,11 @@ namespace Framework
 			{
 				//Cut one Life
 				LivesSystem.UnlockLife(true);
+
+				// Reset level progress on quitting to menu
+				ActiveSession currentSession = ActiveSession.Current;
+				currentSession.Save.ResetClearedArrows(currentSession.LevelIndex);
+				currentSession.Save.RemainingMoves = -1;
 
 				// Save the current state of the game
 				SaveController.Save(true);

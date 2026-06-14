@@ -87,6 +87,7 @@ namespace ArrowOut
 		private Dictionary<Vector2Int, GameObject> _gridDotMap = new Dictionary<Vector2Int, GameObject>();
 		public CubeRowManager cubeRowManager;
 		private Coroutine _waitCall;
+		private Coroutine _generateArrowsCoroutine;
 
 		private LevelRepresentation _levelRepresentation => LevelController.LevelRepresentation;
 
@@ -113,7 +114,29 @@ namespace ArrowOut
 
 		private void OnScreenClose(bool active)
 		{
+			if (active)
+			{
+				CompleteAllActiveMovements();
+			}
 			gridRoot.gameObject.SetActive(!active);
+		}
+
+		private void CompleteAllActiveMovements()
+		{
+			if (_generateArrowsCoroutine != null)
+			{
+				StopCoroutine(_generateArrowsCoroutine);
+				_generateArrowsCoroutine = null;
+			}
+
+			Arrow[] allArrows = gridRoot.GetComponentsInChildren<Arrow>(true);
+			foreach (var arrow in allArrows)
+			{
+				if (arrow != null)
+				{
+					arrow.CompleteActiveMovements();
+				}
+			}
 		}
 
 		private void InitializeFactories()
@@ -131,17 +154,53 @@ namespace ArrowOut
 				return;
 			}
 
-			totalArrows = CurrentLevel.arrowPaths.Count;
+			int currentLevelIndex = ActiveSession.Current.LevelIndex;
+			LevelSave levelSave = ActiveSession.Current.Save;
+			int remainingArrows = 0;
+			foreach (var arrowPath in CurrentLevel.arrowPaths)
+			{
+				if (arrowPath.body == null || arrowPath.body.Count < 2)
+					continue;
+
+				Vector2Int tailPos = arrowPath.body[arrowPath.body.Count - 1];
+				if (!levelSave.IsArrowCleared(currentLevelIndex, tailPos))
+				{
+					remainingArrows++;
+				}
+			}
+			totalArrows = remainingArrows;
 			completedArrows = 0;
 			timer = CurrentLevel.Duration;
 
 			ClearGrid();
 
 			GenerateGridDots();
+
+			// Enable grid dots for already cleared arrows
+			foreach (var arrowPath in CurrentLevel.arrowPaths)
+			{
+				if (arrowPath.body == null || arrowPath.body.Count < 2)
+					continue;
+
+				Vector2Int tailPos = arrowPath.body[arrowPath.body.Count - 1];
+				if (levelSave.IsArrowCleared(currentLevelIndex, tailPos))
+				{
+					foreach (var pos in arrowPath.body)
+					{
+						EnableGridDot(pos);
+					}
+				}
+			}
+
 			GenerateBlockers();
 			GenerateHoles();
 			GeneratePortals();
-			StartCoroutine(GenerateArrowsWithIntro());
+
+			if (_generateArrowsCoroutine != null)
+			{
+				StopCoroutine(_generateArrowsCoroutine);
+			}
+			_generateArrowsCoroutine = StartCoroutine(GenerateArrowsWithIntro());
 		}
 
 		void ClearGrid()
@@ -228,9 +287,16 @@ namespace ArrowOut
 
 		void GenerateArrows()
 		{
+			int currentLevelIndex = ActiveSession.Current.LevelIndex;
+			LevelSave levelSave = ActiveSession.Current.Save;
+
 			foreach (var arrowPath in CurrentLevel.arrowPaths)
 			{
 				if (arrowPath.body == null || arrowPath.body.Count < 2)
+					continue;
+
+				Vector2Int tailPos = arrowPath.body[arrowPath.body.Count - 1];
+				if (levelSave.IsArrowCleared(currentLevelIndex, tailPos))
 					continue;
 
 				CreateArrow(arrowPath);
@@ -247,9 +313,16 @@ namespace ArrowOut
 		{
 			List<Arrow> createdArrows = new List<Arrow>();
 
+			int currentLevelIndex = ActiveSession.Current.LevelIndex;
+			LevelSave levelSave = ActiveSession.Current.Save;
+
 			foreach (var arrowPath in CurrentLevel.arrowPaths)
 			{
 				if (arrowPath.body == null || arrowPath.body.Count < 2)
+					continue;
+
+				Vector2Int tailPos = arrowPath.body[arrowPath.body.Count - 1];
+				if (levelSave.IsArrowCleared(currentLevelIndex, tailPos))
 					continue;
 
 				Arrow arrow = CreateArrow(arrowPath);
@@ -430,6 +503,11 @@ namespace ArrowOut
 				return;
 			}
 
+			int currentLevelIndex = ActiveSession.Current.LevelIndex;
+			LevelSave levelSave = ActiveSession.Current.Save;
+			levelSave.ClearArrow(currentLevelIndex, tailPosition);
+			Framework.Core.SaveController.MarkAsSaveIsRequired();
+
 			arrows.Remove(tailPosition);
 			LevelController.OnArrowRemoved();
 			OnArrowCompleted();
@@ -444,6 +522,12 @@ namespace ArrowOut
 			}
 
 			var item = arrows.First(kvp => kvp.Value == arrow);
+
+			int currentLevelIndex = ActiveSession.Current.LevelIndex;
+			LevelSave levelSave = ActiveSession.Current.Save;
+			levelSave.ClearArrow(currentLevelIndex, item.Key);
+			Framework.Core.SaveController.MarkAsSaveIsRequired();
+
 			arrows.Remove(item.Key);
 			OnArrowCompleted();
 		}
